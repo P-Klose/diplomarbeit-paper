@@ -1,2 +1,52 @@
 \section{Storyblok}
-\lipsum[5-12]
+\setauthor{Peter Klose}
+
+Storyblok ist ein Headless Context Management System (CMS), welches von einem Absolventen unserer Schule mitentwickelt worden ist.
+Es ist auch die einzige Vorgabe für unsere Diplomarbeit. Ein reguläres CMS wie unter anderem Wordpress ist eine Softwareprodukt, 
+welches den Benutzern ermöglicht digital die Daten deren Webseite zu erstellen, gemeinsam zu bearbeiten und auch zu speichern und anschließend zu veröffenlichen.
+Storyblok ist aber kein herkömmliches CMS, sondern ein headless, wortwörtlich "Kopfloses" CMS, headless bedeutet dabei, dass Storyblok nur die Daten und Datenspeicherung betrifft (der Body), nicht aber die Anwendung selbst, die wir als User sehen, in unseren Fall die Webseite (der Head).
+Durch diese Struktur und der daraus resultierenden Abgrenzung haben die Entwickler sehr viel Freiheit. Diejenigen die den Content bearbeiten und erstellen müssen sich keine gedanken über die Endgeräte machen.
+Weiters sind die Frontend-Entwickler nicht limitiert auf eine bestimmte Technologie. Somit kann eine Marke oder Produkt per iOS App, Android App und Web representiert werden ohne, dass man sich auf eine bestimmte Technologie Fokusieren muss. Jeder kann nativ bzw mit der Software die ihm am besten zusteht programmieren.
+
+\section{Next.Js 13}
+\setauthor{Peter Klose}
+Als Frontend-Technologie stützten wir uns auf Next.js 13, ein React Framework für full-stack web applicationes. 
+Die hauptsächlichen Features von Next sind dabei folgende:
+
+\subsection{Routing}
+\setauthor{Peter Klose}
+Direkt mit Next kommt ein Filesystem basierter Router mit. Dieser unterstützt unter anderem Layouts, verschachtelte Routen, den Ladestatus und viele weitere.
+Wir wählten dabei den neuen App Router Ansatz welcher mit Next 13 veröffenlicht wurde. Durch ihn wurden die Neuheiten von React, wie Server Componentes und Streaming in Next eingebaut.
+
+\subsection{Optimierung}
+\setauthor{Peter Klose}
+In der Webbranche ist Pagespeed das wichtigste, dies hat auch Next verstanden und bietet einige Optimierungsoptionen bei Bildern, Links oder auch bei den Metadaten und Scripts. 
+Bei den Bildern wurde das <img> Element dahingehend überarbeitet, sodass Bilder "lazy" geladen werden und dabei noch dynamisch auf die große des Bildschirms angepasst werden. 
+Das <a> Tag bzw. der Link wurde so angepasst, dass die Webseite, wenn sie vollständig geladen ist die möglichen Ziele vorlädt um somit eine schnelleren und weicheren Wechsel der Seiten zu ermöglichen.
+
+\subsection{Rendern}
+\setauthor{Peter Klose}
+Next bietet auch noch die möglichkeit der Client oder Server-Components, Client-Components sind dabei Teile der Webseite die im Client also im Browser geladen und gezeigt werden.
+Server-Components hingegen müssen auf dem Server zusammengebaut werden und werden dann erst zum Client geschickt.
+
+\section{Vercel}
+\setauthor{Peter Klose}
+Beim Deployment wurde hauptsächlich aus dem grund Vercel verwendet, da Next aus dem selben Hause stammt und das Deployment somit wirklich kein Problem darstellte.
+Sobald 'next build' funktionierte konnte das GitHub Repository einfach mit einem Vercel Account verbunden werden und der main-Branch war nach 2 Minuten deployed. 
+
+\section{TailwindCss}
+\setauthor{Peter Klose}
+Als CSS Framework wird von uns TailwindCSS als PostCSS Plugin verwendet. 
+Um trotzdem eine übersichtliche Struktur in die Klassennamen beizubehalten wurde die VS-Code Erweiterung Prettier verwendet. Dadurch werden die Klassennamen gemäß der vorgeschlagenen Sortierung von Tailwind geordnet.
+
+
+
+\section{Framer Motion}
+\setauthor{Peter Klose}
+Animation des Aufbaues ...
+
+\section{Lottie}
+\setauthor{Peter Klose}
+Animation der Grafiken ...
+
+

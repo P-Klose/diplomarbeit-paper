@@ -1,2 +1,168 @@
-\section{Titel}
+
+
+\section{Storyblok}
+\setauthor{Peter Klose}
+
+In Storyblok mussten wir zu aller erst die gewollte Struktur der Webseite widerspiegeln. Dies wurde im Bereich 'Content' gemacht. 
+Für Pfade mit Unterseiten wurden Ordner erstellt. Die Restlichen Seiten wurden als 'Page', 'Branch' oder 'Article' definiert.
+Die Content-Gestaltung und Festlegung fand dann in diesen 3 Typen Statt. 
+
+
+\subsection{Storyblok API}
+
+\subsection{Bausteine der Webseite}
+Wie der Name schon andeutet handelt vieles in diesem headless CMS von Blöcken. Diese haben Variablen, welche dann im Editor mit Content befüllt werden können. 
+Einen Überblick über alle verfügbaren Blöcke hat man in der Block library. Dort kann man auch neue Blöcke erstellen. In unserer finalen Version der Webseite sind 41 Blöcke zu finden. 
+
+All unsere Blöcke enstprechen der selben Namensschreibweise. Dabei verwenden wir die Snake case Schreibweise diese beginnen immer klein und mehrere Worte trennt ein \textunderscore  als Beispiel 'default\textunderscore component'.
+
+In einem Block gibt es dann eine Ansammlung von Feldern, dabei gibt es mehrere zur Auswahl:
+
+\begin{longtable}[c]{ll}
+    \textbf{Feldname}              & \textbf{Beschreibung}                                                                                                                                                                                 \\ \hline
+    \endhead
+    %
+    \multicolumn{1}{|l|}{Blocks}        & \multicolumn{1}{l|}{Weitere Blöcke können hinzugefügt werden.}              \\ \hline
+    \multicolumn{1}{|l|}{Text}          & \multicolumn{1}{l|}{Einfaches einzeiliges Textfeld}                           \\ \hline
+    \multicolumn{1}{|l|}{Textarea}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld ohne Formatierung}    \\ \hline
+    \multicolumn{1}{|l|}{Richtext}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten -> JSON Format}     \\ \hline
+    \multicolumn{1}{|l|}{Markdown}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten -> Markdown Format}  \\ \hline
+    \multicolumn{1}{|l|}{Number}        & \multicolumn{1}{l|}{Nummernfeld ohne Formatierung}  \\ \hline
+    \multicolumn{1}{|l|}{Date/Time}     & \multicolumn{1}{l|}{Datum und Uhrzeit - Picker}  \\ \hline
+    \multicolumn{1}{|l|}{Boolean}       & \multicolumn{1}{l|}{Checkbox -> true/false}  \\ \hline
+    \multicolumn{1}{|l|}{Multi-Options} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Liste mehrer möglichkeiten, welche konfigurierbar sind. Entweder hartcodiert \\ oder als externes JSON, bzw. Datenbank.\end{tabular}}  \\ \hline
+    \multicolumn{1}{|l|}{Single-Option} & \multicolumn{1}{l|}{Selbiges wie oben, es ist aber nur ein Wert auswählbar}  \\ \hline
+    \multicolumn{1}{|l|}{Asset}         & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Multi-Assets}  & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Link}          & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Table}         & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Group}         & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Image(old)}    & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{File(old)}     & \multicolumn{1}{l|}{}  \\ \hline
+    \multicolumn{1}{|l|}{Plugin}        & \multicolumn{1}{l|}{}  \\ \hline
+\end{longtable}
+
+All diese Attribute haben dann ein Bearbeitungsfenster, welches von oben nach unten mindestens den Typen, Darstellungsnamen, Technischen Namen, Checkbox - Notwendig, Checkbox - Übersetzbar und Beschreibungsfeld bietet.
+
+Die 2 Wichtigsten sind aber die beiden Checkboxen. Sie ermöglichen uns sicherzustellen, dass der Wert gesetzt werden muss (Checkbox - Notwendig) und dass man ihn falls Notwendig übersetzten kann (Checkbox - Übersetzbar). 
+
+Nachstehen werden diese beiden Checkboxen mit den in Klammern stehenden englischen Buchstaben angezeigt.
+
+\subsubsection*{Page}
+Der Page-Block war schon vorgefertigt von Storyblok und wurde genau so übernommen.
+Er ist sehr simpel aufgebaut das einzige Attribut, welches er beinhaltet ist body ein Blocks Element.
+
+\subsubsection*{Article}
+Article ist der Blok, welcher für News, Projekte, Clubs bzw. Events benutzt wird. 
+Wie Page ist er ein Root Level Block, er besitzt jedoch keinen dynamischen body sondern nur folgende Attribute
+
+headline (R,T) - Überschrift des Newsbeitrags oder Events 
+
+subline T - Unterüberschrift
+
+type R -  Typ des Artikls News, Event, Projekt, Club
+
+allocate - Zugeordnete Abteilung mitunter auch Allgemein, Sport oder Reisen
+
+date R - Erstellungsdatum, Datum des Events
+
+content R - Formatierter Text
+
+image R - Titelbild für diesen Beitrag
+
+assets - weitere Medien
+
+subpage\textunderscore enabled default false - Soll ein Link vollen Seite dieses Beitrags angezeigt werden
+
+\subsubsection*{Branch}
+Branch spiegelt unsere Abteilungen wieder, er bietet wie Page einen body an Blocks und weitere wichtige Attribute zur richtigen Darstellung der Abteilungen sind:
+
+headline R,T - Abteilungsname 
+
+subline T - Kurzbeschreibung der Abteilung
+
+allocate - Zugeordnete Abteilung 
+
+imagevideo - Link zum YouTube-Video der Abteilung
+
+folder - Hinterlegter Pdf Folder der Abteilung
+
+description - Beschreibung der Abteilung
+
+\subsubsection*{All Articles }
+All Articles ist in Storyblok ein relativ simpler Block, er dient dazu alle Articles die zu einer bestimmten Kategorie gehören anzuzeigen. Attribute des Blocks:
+
+headline (R, T) - Überschrift 
+
+type (R) - Article Kategorie Auswahl (News,Events,Projekte,Clubs)
+
+filter (default: false) - Filtermöglichkeit der Articles
+
+\subsubsection*{Basic Slider}
+Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem Mouse drag bedient wird. Da dieser aber nicht perfekt in unser UI,UX-Design passt könnte es sein dass er durch den Scroll Slider ersetzt wird. Attribute des Blocks:
+
+headline (R, T) - Überschrift
+
+content (R) - Mindestens 3 Iframe Container sind notwenig andere Blocks sind nicht erlaubt.
+
+\subsubsection*{Classes}
+Classes stellt die Struktur für die Darstellung der Klassen an der HTL dar. Es handelt sich also um eine Abgeschlossene Sektion als Blok in dem Content sind nur Class Entry Blocks erlaubt.
+
+headline (R, T) - Überschrift
+
+content (R) - Beliebige Anzahl von Class Entry Blocks
+
+\subsubsection*{Classes Entry}
+Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe als Foto ein Klassenfoto. Attribute des Blocks:
+
+classname (R) - Name der Klasse
+
+img (R) - Klassenfoto der Klasse als Filetype sind nur Bilder erlaubt
+
+headofclass - Klassenvorstand der Klasse
+
+\subsubsection*{Custom Image}
+Custom Image dient als Grundlage falls im Frontend spezielle Anforderungen an ein Bild gestellt sind. Wie in Über Uns, wo die Broschüre gedreht ist. Attribute des Blocks:
+
+image (R) - Darzustellende Bilddatei
+
+type - Liste der speziellen Anforderung wie es dargestellt werden soll
+
+\subsubsection*{Custom Link}
+Custom Link dient dazu alle Links die existieren gleich zu gestalten. Obwohl ein Link-Attribut in Storyblok existiert haben wir uns nicht dafür ausgesprochen, weil es keine Möglichkeit gibt Symbole oder andere Spezielle Styles zu hinterlegen. Attribute des Blocks:
+
+link (R) - Link zu internen oder externen Medien bzw. Seiten
+
+symbol - Auswählbare Symbole, die vor dem Link angezeigt werden
+
+display\textunderscore name (R,T) - ...
+
+\subsubsection*{Designable Table}
+
+\subsubsection*{Faq Collection}
+
+
+\subsection{Internationalisierung}
+
+\section{Next}
+
+\subsection{Storyblok}
+
+\subsection{Komponenten}
+
+\subsection{...}
+
+\subsection{Design}
+
+\subsection{Internationalisierung}
+
+\subsection{Design}
+
+
+
+\section{Animationen}
+
+\subsection{Grafiken}
+
+\subsection{Grafiken}
 
