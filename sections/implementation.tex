@@ -9,6 +9,28 @@ Die Content-Gestaltung und Festlegung findet dann in diesen 3 Typen statt.
 
 
 \subsection{Storyblok API}
+Da Storyblok ein headless CMS ist, ist die einzige Möglichkeit auf die Daten zuzugreifen deren API-Schnittstelle im REST Standard. 
+Die von Storyblok bereitgestellte API verwendet auch in Error Handling bekannte HTTP Error Meldungen ansonsten, wenn es keinen Fehler gibt werden Daten im JSON Format weitergegeben. 
+Die Basis URL des Endpoint lautet dabei wie folgt: \textbf{https://api.storyblok.com/v2}. Um jedoch die richtigen Daten zu erhalten müssen noch die 2 Wichtigsten Parameter gesetzt werden nämlich \textbf{version} entweder als \textbf{draft oder published} und der Token der zur Authentifizierung dient.
+Sonstige Parameter beziehungsweise Einstellungen die verwendet wurden lauten:
+
+\subsubsection*{Pagination}
+Die Pagination ermöglicht es Listen von Elemten zu begrenzen um sie dann mit mehreren Unterseiten verfügbar zu machen. Ein Beispiel wäre die News Seite, sie lädt die neusten 25 News und wenn man auf 'weitere News' am Ende der Seite clicked erhält man die nächsten 25.
+Hierfür werden die Parameter per\_page und page verwendet. Der standardmäßigen eingestellte wert für beide lautet 25 bei per\_page und 1 bei page.
+
+\subsubsection*{Stories}
+Stories stellen gesamte Seiten dar, wenn man also die \textbf{/ausbildung/it-medientechnik} URL aufrufen will macht man um alle Daten zu erhalten einen Request an die \textbf{https://api.storyblok.com/v2/cdn/stories/ausbildung/it-medientechnik} URL. 
+Hiermit würde man einen Großteil der Daten bekommen jedoch nicht alle. Verlinkte News, die eine eigene URL besitzen würde man nur als verlinke ID sehen. Um dieses Problem zu lösen bietet Storyblok den sogenannten  \textbf{resolve\_relations} Parameter. Hinter diesen Parameter muss allerdings noch der richtige Verweis angegeben werden in folgenden Format: \textbf{component\_name.field\_name} somit werden dann wirklich alle Daten geladen die benötigt werden um die Seite darzustellen.
+
+\subsection{Internationalisierung}
+Storyblok bietet für die Internationalisierung 3 verschiedene Ansätze: Field Level translation, Folder Level translation und Space Level translation. In dieser Arbeit wurde der \textbf{Field Level Translation} Ansatz gewählt. 
+Das Setup dafür schaut wie folgt aus:
+
+Als Erstes müssen in den Einstellungen des Spaces unter dem Reiter 'Internationalization' die gewünschten Sprachen eingestellet werden. In diesen fall war dies 'de' für Deutsch und 'en' für Englisch. 
+Im Editor kann dann die Sprache auf Englisch gestellt werden und alle Felder, bei denen die Translation Checkbox angehakt ist können übersetzt werden. 
+
+Um diese Sprache dann auch auf der Webseite angezeigt zu bekommen muss bei dem Request an die API am Ende einfach der Parameter \textbf{language=} angeben werden. In diesem Fall wäre dies \textbf{'de'} oder \textbf{'en'}.
+
 
 \subsection{Bausteine der Webseite}
 Wie der Name schon andeutet, handelt vieles in diesem headless CMS von Blöcken. Diese haben Variablen, welche dann im Editor mit Content befüllt werden können. 
@@ -614,11 +636,83 @@ Der Value Document Block ist für die Representation des Wertedokuments an der H
 \subsubsection*{Value Document Entry}
 Value Document Entry ermöglicht einen Eintrag in das Wertedokument. Die Attribute belaufen sich nur auf die Kernaussage des Wertes 'headline' und auf eine detalierte beschreibung im Richtext-Format (description) 
 
-\subsection{Internationalisierung}
-
 \section{Next}
 
+Am start dieses Projekts war Next13 die neuste Version und somit wurde dieses Projekt auch mit Next13 in Verbindung mit dem App Router erstellt.
+Dies geschah durch den Befehl \emph{npx create-next-app@latest} dadurch war auch die gesamte Ordnerstruktur des Projekts fertig und die Template Seite konnte mit \emph{npm run dev} gestartet werden und auf \textbf{localhost:3000} aufgerufen werden.
+
+\subsection{Struktur}
+\subsubsection*{Folder}
+Die von Storyblok generierten Folder sind \textbf{public} und \textbf{app}. 
+Der public Ordner ist dabei für statische Assets verantwortlich. In unserer Implementierung wurde er nur für das Schullogo und eine Illustration der Schule verwendet. 
+Der app Ordner ist aber der wichtigste in dem ganzen Projekt er ist wie schon vorher erwähnt zuständig für das Routing der gesamten Webseite. 
+
+
+Speziell von uns erstellt wurden die Ordner \textbf{animations}, \textbf{conponents}, \textbf{types} und \textbf{util} um eine bessere Übersicht über das Projekt zu erhalten. In den Ordnern befinden sich dann die dazugehörigen Daten.
+
+Unter \textbf{animations} sind dies alle exportierten Animation die auf der Webseite angezeigt werden sollen im JSON-Format. 
+
+Unter \textbf{components} sind alle erstellen Components, wiederum aufgeteilt in Unterordner um eine Struktur zu bewahren. Das wichtigste File in components ist aber der \textbf{StoryblokProvider.tsx}, dieser ermöglicht die Verbindung zwischen Storyblok und Next.
+
+Unter \textbf{types} ist ein File \textbf{interface.tsx} zu finden in diesem sind alle TS-Typen für das ganze Projekt festgehalten.
+
+Unter \textbf{util} befinden sich dann noch 2 Files, welche rein Technische TS Funktionen beinhalten.
+
+\subsubsection*{File}
+Files im Root-Level des Projekts dienen hauptsächlich zur Konfiguration des Projekts. Dabei handelt es von den Files \textbf{.env.local}, \textbf{middleware.js}, \textbf{next-env.d.ts}, \textbf{next.config.js}, \textbf{package.json} und \textbf{tsconfig.json}.
+
+Bei \textbf{.env.local} handelt es sich um das File, welches im lokalen betrieb (npm run dev), die ganzen Konfigurationen beinhaltet in unseren konkreten fall ist dies nur der \textbf{STORYBLOK\_API\_KEY} und die \textbf{STORYBLOK\_API\_VERSION}.
+
+In \textbf{middleware.js} wird eine Middleware ausgeführt, welche den Standort und im Zusammenhang damit die Sprache der Seite einstellt. Dafür wird am start der URL ein /de oder ein /en eingefügt falls nichts genannt und auch keine besonderen Optionen bekannt sind wird standardmäßigen /de verwendet.
+
+\textbf{next-env.d.ts} ist die TS Deklaration für Next.js
+
+In \textbf{next.config.js} findet die Konfiguration des ganzen Projekt statt.
+
+In \textbf{package.json} befinden sich die Abhängigkeiten und Skripte des Projekts.
+
+\textbf{tsconfig.json} ist das Konfigurationsfile für TypeScript.
+
+\subsection{Routing}
+Um die Rute mywebsite.com/products/shoes/newest zu realisieren müsste man im App Router (Ordner app) 3 Unterordner erstellen sodass folgenden Ordnerstruktur entsteht app/products/shoes/newest. Bei Statischen Seiten, wo der Content als HTML gepflegt wird macht dies auch Sinn. All das was man nacher auf der Webseite sehen will muss in das 'page.tsx' File an der Richtigen Stelle. 
+Da es sich aber bei Storyblok um dynamisch generierte Seiten handelt, bei denen man auch zusätzlich schon die Pfadstruktur anhand der Ordner und Seiten festlegt wurde dieser Ansatz nicht geweht. Bei Änderungen der Struktur in Storyblok könnte es sein, dass die Seite gar nichtmehr funktioniert. 
+
+Die Lösung dafür waren dynamische Routen realisierbar durch Ordner, bei denen der name in Eckigen Klammern stand ein sogenannter [Dynamic Segment] Ordner. Bei diesem Ordner handelt es sich um einen Teilweise Dynamischen Pfad, er macht nämlich nur diese eine Stelle im Pfad dynamisch. Ein Beispiel dafür wäre app/blog/[slug]/page.tsx Pfade wie /blog/a /blog/b blog/b funktionieren alle, wenn man aber /blog/a/b eingibt ist dies nicht mehr möglich. 
+
+Um dies zu ermöglichen wurde ein Catch-all Statement verwendet dies ermöglicht ein Match aller weiteren Elemente und durch einen Ordner mit dem Namen [...slug] bei uns realisiert.
+
+Die Ordnerstruktur von unseren Projekt sieht also am ende nun so aus /app/[lng]/[...slug]. Der [lng] Ordner wurde dabei absichtlich nicht in [...slug] inkludiert, damit alle Subpages einen eindeutigen zugriff auf den lng Parameter haben. Um nun alle Seiten darstellen zu können muss nur mehr die Page.tsx ertsellt werden, welche im finalen Aufbau sehr simpel erscheint:
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{pics/final-page.png}
+    \caption{Finales page.tsx}
+    % \label{fig:impl:figma_entwurf}
+\end{figure}
+
 \subsection{Storyblok}
+Nachdem die gerade erstelle Next13 Seite erfolgreich funktionierte wurde das Storyblok Tutorial durchgearbeitet. Im späteren verlauf der Arbeit stellten sich aber immer mehr Probleme im Bezug zu der am Anfang erstellten Verbindung, sodass in der Mitte der Arbeit die Verbindung verändert wurde und am Schluss die komplette API-Schnittstelle selbst implementiert wurde.
+Nicht aber nur das 5 Minuten Start Tutorial war noch nicht auf dem neuesten Stand sondern auch der Großteil der restlichen Tutorails, welche das Zusammenspiel von Next13 und Storyblok erklären sollten waren nicht auf den Aktuellsten Stand beziehungsweise nicht auf den App Router Ansatz ausgelegt.
+
+
+
+\subsection{Packages}
+Da es sich bei diesem Projekt um eine Node basierte Architektur handelt wurden einige Packages als Erweiterungen installiert. Packages, welche in Kombination mit Storyblok stehen werden hier noch nicht angeführt und werden in den Unterkapitel Storyblok näher beschrieben werden. Auch Packages wie react und typescript werden hier nicht behandelt, da sie nicht explizit hinzugefügt worden sind und somit die Basis des Projektes bilden.
+
+\subsubsection*{Framer Motion}
+
+\subsubsection*{TailwindCss}
+In Kombination mit postcss autoprefixer ...
+
+\subsubsection*{React Lottie}
+... Lottie einbinden
+
+\subsubsection*{React Icons}
+... Icons einbinden
+
+\subsubsection*{React Fast Marquee}
+... Libery, die eine Marquee kinfigurierbare Marquee bereitstellt.
 
 \subsection{Komponenten}
 
@@ -628,9 +722,7 @@ Value Document Entry ermöglicht einen Eintrag in das Wertedokument. Die Attribu
 
 \subsection{Internationalisierung}
 
-\subsection{Design}
-
-
+\subsection{Deployment}
 
 \section{Animationen}
 
