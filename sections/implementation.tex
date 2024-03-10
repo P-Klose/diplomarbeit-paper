@@ -18,28 +18,55 @@ All unsere Blöcke enstprechen der selben Namensschreibweise. Dabei verwenden wi
 
 In einem Block gibt es dann eine Ansammlung von Feldern, dabei gibt es mehrere zur Auswahl:
 
-\begin{longtable}[c]{ll}
-    \textbf{Feldname}              & \textbf{Beschreibung}                                                                                                                                                                                 \\ \hline
+% https://www.storyblok.com/docs/schema-configuration#field-types
+
+\begin{longtable}[c]{|l|p{10cm}|}
+    \caption{Field Types, die von Storyblok bereitgestellt werden}
+    \label{tab:beispiel} \\
+    \hline
+    \textbf{Feldname} & \textbf{Beschreibung} \\
+    \hline
     \endhead
     %
-    \multicolumn{1}{|l|}{Blocks}        & \multicolumn{1}{l|}{Weitere Blöcke können hinzugefügt werden.}              \\ \hline
-    \multicolumn{1}{|l|}{Text}          & \multicolumn{1}{l|}{Einfaches einzeiliges Textfeld}                           \\ \hline
-    \multicolumn{1}{|l|}{Textarea}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld ohne Formatierung}    \\ \hline
-    \multicolumn{1}{|l|}{Richtext}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten -> JSON Format}     \\ \hline
-    \multicolumn{1}{|l|}{Markdown}      & \multicolumn{1}{l|}{Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten -> Markdown Format}  \\ \hline
-    \multicolumn{1}{|l|}{Number}        & \multicolumn{1}{l|}{Nummernfeld ohne Formatierung}  \\ \hline
-    \multicolumn{1}{|l|}{Date/Time}     & \multicolumn{1}{l|}{Datum und Uhrzeit - Picker}  \\ \hline
-    \multicolumn{1}{|l|}{Boolean}       & \multicolumn{1}{l|}{Checkbox -> true/false}  \\ \hline
-    \multicolumn{1}{|l|}{Multi-Options} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Liste mehrer möglichkeiten, welche konfigurierbar sind. Entweder hartcodiert \\ oder als externes JSON, bzw. Datenbank.\end{tabular}}  \\ \hline
-    \multicolumn{1}{|l|}{Single-Option} & \multicolumn{1}{l|}{Selbiges wie oben, es ist aber nur ein Wert auswählbar}  \\ \hline
-    \multicolumn{1}{|l|}{Asset}         & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Multi-Assets}  & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Link}          & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Table}         & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Group}         & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Image(old)}    & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{File(old)}     & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{Plugin}        & \multicolumn{1}{l|}{}  \\ \hline
+    \hline
+    \endfoot
+    %
+    Blocks & Weitere Blöcke können hinzugefügt werden. \\
+    \hline
+    Text & Einfaches einzeiliges Textfeld \\
+    \hline
+    Textarea & Mehrzeiliges Textfeld ohne Formatierung \\
+    \hline
+    Richtext & Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten (JSON Format) \\
+    \hline
+    Markdown & Mehrzeiliges Textfeld mit Formatierungsmöglichkeiten (Markdown Format) \\
+    \hline
+    Number & Nummernfeld ohne Formatierung \\
+    \hline
+    Date/Time & Datum und Uhrzeit - Picker \\
+    \hline
+    Boolean & Checkbox - true/false \\
+    \hline
+    Multi-Options & Liste von Schlüssel-Wert-Paaren, die konfigurierbar sind. Entweder hartcodiert, als externes JSON oder als Datenbank. Mehrere Werte sind auswählbar \\
+    \hline
+    Single-Option & Liste von Schlüssel-Wert-Paaren, die konfigurierbar sind. Entweder hartcodiert, als externes JSON oder als Datenbank. Kein oder ein Werte sind auswählbar \\
+    \hline
+    Asset & Fileauswahl, die in den Typen limitiert werden kann (nur Images, Videos, Audio, Textdokumente) aber ansonsten alle Typen annimmt. \\
+    \hline
+    Multi-Assets & Fileauswahl, die in den Typen limitiert werden kann (nur Images, Videos, Audio, Textdokumente) aber ansonsten alle Typen annimmt. Mehrere Files können hier gleichzeitig ausgewählt werden. \\
+    \hline
+    Link & Link auf eine Unterseite aus Storyblok oder als extere URL \\
+    \hline
+    Table & In der größe Formatierbare Tabelle, keine Textformatierung möglich \\
+    \hline
+    Group & Gruppierungs Folder für die Attribute\\
+    \hline
+    Image(old) & Veraltete Option Bilder einzubinden - Asset sollte nun verwendet werden \\
+    \hline
+    File(old) & Veraltete Option Files einzubinden - Asset sollte nun verwendet werden \\
+    \hline
+    Plugin & Zugriff auf externe Storyblok-Pugins - UI UX differenziert mit jedem Plugin \\
+    \hline
 \end{longtable}
 
 All diese Attribute haben dann ein Bearbeitungsfenster, welches von oben nach unten mindestens den Typen, Darstellungsnamen, Technischen Namen, Checkbox - Notwendig, Checkbox - Übersetzbar und Beschreibungsfeld bietet.
@@ -56,91 +83,536 @@ Er ist sehr simpel aufgebaut das einzige Attribut, welches er beinhaltet ist bod
 Article ist der Blok, welcher für News, Projekte, Clubs bzw. Events benutzt wird. 
 Wie Page ist er ein Root Level Block, er besitzt jedoch keinen dynamischen body sondern nur folgende Attribute
 
-headline (R,T) - Überschrift des Newsbeitrags oder Events 
-
-subline T - Unterüberschrift
-
-type R -  Typ des Artikls News, Event, Projekt, Club
-
-allocate - Zugeordnete Abteilung mitunter auch Allgemein, Sport oder Reisen
-
-date R - Erstellungsdatum, Datum des Events
-
-content R - Formatierter Text
-
-image R - Titelbild für diesen Beitrag
-
-assets - weitere Medien
-
-subpage\textunderscore enabled default false - Soll ein Link vollen Seite dieses Beitrags angezeigt werden
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Article Blocks}
+    \label{tab:article}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+        headline & \checkmark & & Überschrift des Newsbeitrags oder Events \\
+        subline & & \checkmark & Unterüberschrift \\
+        type & \checkmark & & Typ des Artikels: News, Event, Projekt, Club \\
+        allocate & & & Zugeordnete Abteilung, mitunter auch Allgemein, Sport oder Reisen \\
+        date & \checkmark & & Erstellungsdatum, Datum des Events \\
+        content & \checkmark & & Formatierter Text \\
+        image & \checkmark & & Titelbild für diesen Beitrag \\
+        assets & & & Weitere Medien \\
+        subpage\_enabled & & & Soll ein Link zur vollen Seite dieses Beitrags angezeigt werden \\
+\end{longtable}
 
 \subsubsection*{Branch}
 Branch spiegelt unsere Abteilungen wieder, er bietet wie Page einen body an Blocks und weitere wichtige Attribute zur richtigen Darstellung der Abteilungen sind:
 
-headline R,T - Abteilungsname 
-
-subline T - Kurzbeschreibung der Abteilung
-
-allocate - Zugeordnete Abteilung 
-
-imagevideo - Link zum YouTube-Video der Abteilung
-
-folder - Hinterlegter Pdf Folder der Abteilung
-
-description - Beschreibung der Abteilung
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Branch Blocks}
+    \label{tab:article}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Abteilungsname \\
+    subline & & \checkmark & Kurzbeschreibung der Abteilung \\
+    allocate & & & Zugeordnete Abteilung \\
+    imagevideo & & & Link zum YouTube-Video der Abteilung \\
+    folder & & & Hinterlegter PDF-Folder der Abteilung \\
+    description & & & Beschreibung der Abteilung \\
+\end{longtable}
 
 \subsubsection*{All Articles }
-All Articles ist in Storyblok ein relativ simpler Block, er dient dazu alle Articles die zu einer bestimmten Kategorie gehören anzuzeigen. Attribute des Blocks:
+All Articles ist in Storyblok ein relativ simpler Block, er dient dazu alle Articles die zu einer bestimmten Kategorie gehören anzuzeigen.  
 
-headline (R, T) - Überschrift 
-
-type (R) - Article Kategorie Auswahl (News,Events,Projekte,Clubs)
-
-filter (default: false) - Filtermöglichkeit der Articles
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des All Articles Blocks}
+    \label{tab:article}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    type & \checkmark & & Article Kategorie Auswahl (News,Events,Projekte,Clubs) \\
+    filter & & & Filtermöglichkeit der Articles (default: false) \\
+\end{longtable}
 
 \subsubsection*{Basic Slider}
-Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem Mouse drag bedient wird. Da dieser aber nicht perfekt in unser UI,UX-Design passt könnte es sein dass er durch den Scroll Slider ersetzt wird. Attribute des Blocks:
+Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem Mouse drag bedient wird. Da dieser aber nicht perfekt in unser UI,UX-Design passt könnte es sein dass er durch den Scroll Slider ersetzt wird.  
 
-headline (R, T) - Überschrift
-
-content (R) - Mindestens 3 Iframe Container sind notwenig andere Blocks sind nicht erlaubt.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Basic Slider Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    content & \checkmark & & Mindestens 3 Iframe Container sind notwendig, andere Blocks sind nicht erlaubt \\
+\end{longtable}
 
 \subsubsection*{Classes}
 Classes stellt die Struktur für die Darstellung der Klassen an der HTL dar. Es handelt sich also um eine Abgeschlossene Sektion als Blok in dem Content sind nur Class Entry Blocks erlaubt.
 
-headline (R, T) - Überschrift
-
-content (R) - Beliebige Anzahl von Class Entry Blocks
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Classes Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    content & \checkmark & & Beliebige Anzahl von Class Entry Blocks \\
+\end{longtable}
 
 \subsubsection*{Classes Entry}
-Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe als Foto ein Klassenfoto. Attribute des Blocks:
+Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe als Foto ein Klassenfoto.  
 
-classname (R) - Name der Klasse
-
-img (R) - Klassenfoto der Klasse als Filetype sind nur Bilder erlaubt
-
-headofclass - Klassenvorstand der Klasse
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Classes Entry Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    classname & \checkmark & & Name der Klasse \\
+    img & \checkmark & & Klassenfoto der Klasse als Datei (nur Bilder erlaubt) \\
+    headofclass & & & Klassenvorstand der Klasse \\
+\end{longtable}
 
 \subsubsection*{Custom Image}
-Custom Image dient als Grundlage falls im Frontend spezielle Anforderungen an ein Bild gestellt sind. Wie in Über Uns, wo die Broschüre gedreht ist. Attribute des Blocks:
+Custom Image dient als Grundlage falls im Frontend spezielle Anforderungen an ein Bild gestellt sind. Wie in Über Uns, wo die Broschüre gedreht ist.  
 
-image (R) - Darzustellende Bilddatei
-
-type - Liste der speziellen Anforderung wie es dargestellt werden soll
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Custom Image Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    image & \checkmark & & Darzustellende Bilddatei \\
+    type & & & Single-Select Liste der speziellen Anforderungen, wie es dargestellt werden soll \\
+\end{longtable}
 
 \subsubsection*{Custom Link}
-Custom Link dient dazu alle Links die existieren gleich zu gestalten. Obwohl ein Link-Attribut in Storyblok existiert haben wir uns nicht dafür ausgesprochen, weil es keine Möglichkeit gibt Symbole oder andere Spezielle Styles zu hinterlegen. Attribute des Blocks:
+Custom Link dient dazu alle Links die existieren gleich zu gestalten. Obwohl ein Link-Attribut in Storyblok existiert haben wir uns nicht dafür ausgesprochen, weil es keine Möglichkeit gibt Symbole oder andere Spezielle Styles zu hinterlegen.  
 
-link (R) - Link zu internen oder externen Medien bzw. Seiten
-
-symbol - Auswählbare Symbole, die vor dem Link angezeigt werden
-
-display\textunderscore name (R,T) - ...
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Custom Link Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    link & \checkmark & & Link zu internen oder externen Medien bzw. Seiten \\
+    symbol & & & Auswählbare Symbole, die vor dem Link angezeigt werden \\
+    display\textunderscore name & \checkmark & \checkmark & Anzeigename des Links \\
+\end{longtable}
 
 \subsubsection*{Designable Table}
+Storyblok bietet ein Plugin, welches es ermöglicht Tabellen darzustellen. Bei diesem Plugin ist es jedoch nicht möglich einen designten Body (fetter und farbiger Text) einzufügen. Aus diesem Grund wurde ein eigener Blok erstellt, welcher diese Probleme beseitigt.
+
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Designable Table Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Überschrift \\
+    columns & \checkmark & & Anzahl der gewünschten Spalten \\
+    header & \checkmark & & Der 'Table Row' Block wird vorgesehen, die Menge ist dabei auf 1 limitiert \\
+    body & \checkmark & $\geq 1$ & Mindestens ein 'Table Row' Block wird vorgesehen \\
+\end{longtable}
+
+\subsubsection*{Table Row}
+Der Table Row Block, stellt eine Zeile der Tabelle dar. Aus diesem Grund wurde bei den Attributen des Blocks nur ein value hinterlegt, welches wieder 'Blocks' Element ist. Bei diesem ist die Blockauswahl auf 'Table Value' Limitiert.
+
+\subsubsection*{Table Value}
+Der 'Table Value' Block wurde so konfiguriert, sodass die einzige Eingabe ein Richtext-Element ist. Durch dieses wird eine komplette Formatierung gewährleistet.
 
 \subsubsection*{Faq Collection}
+Um die häufig gestellen Fragen und Anworten darstellen zu können wurde eine FAQ Ansammlung erstellt.
 
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Faq Collection Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    description & & & Zusätzliche Beschreibung als Richtext \\
+    faqs & \checkmark & & Beliebige Anzahl von FAQ-Element Blocks \\
+\end{longtable}
+
+\subsubsection*{Faq Element}
+Faq Element dient wiederum nur zur Befüllung der FAQ Collection.
+
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Faq Element Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    question & \checkmark & \checkmark & Einfacher Text für die Frage \\
+    answer & \checkmark & \checkmark & Richtext für eine formatierte Antwort \\
+    video & & & Link zur Antwort-Video von Direktor DI Richard Kainerstorfer \\
+    show\textunderscore video & & & Boolescher Wert ob das Video angezeigt werden soll oder nicht (default: false) \\
+\end{longtable}
+
+\subsubsection*{Footer}
+Footer ist der Block, wie der Name schon sagt, der den Footer der Webseite wiederspiegelt. Seine Attribute beinhalten nur footer\textunderscore bg - ein Bild welches zu späziellen Anlässen als Hintergrund verwendet werden kann und columns eine Ansammlung von Footer Col Blöcken.
+
+\subsubsection*{Footer Col}
+Der Footer Col Block ist eine Spalte des Footers - hierbei wurde eine Überschift der spalte (headline) und eine Ansammlung an Weiterführenden Links (links) für die Umsetzung eingerichtet.
+
+\subsubsection*{Grid}
+Der Grid Block wurde so eingerichtet, sodass alle gängigen Grids Konfiguriert werden konnen. Dafür wurden einige Attribute festgelegt.
+
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Grid Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    content & \checkmark & & Ansammlung von Blöcken, die einen definierten oder konfigurierbaren Column Span haben \\
+    columns & \checkmark & & Minimale Anzahl der Spalten \\
+    mediumcolumns & & & Spaltenanzahl ab einer Breite von 768px \\
+    largecolumns & & & Spaltenanzahl ab einer Breite von 1024px \\
+    max\_w & & & Maximale Breite des Grids \\
+    width & & & Definiert als Column Span (nur notwendig, wenn ein Grid in einem anderen Grid verwendet wird) \\
+\end{longtable}
+
+\subsubsection*{Grid Item}
+Grid Item bietet den Content für das Grid um vielseitig einsetzbar zu sein sind viele Konfigurationen möglich.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Grid Item Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Überschrift \\
+    subline & & \checkmark & Unterüberschrift \\
+    content & & \checkmark & Formatierbarer Text als Richtext \\
+    width & & & Festlegung des Column Span des Elements \\
+    type & & & Definiert den Stil des Elements (Ausbildung, Hochformat, Querformat) \\
+    content\_type & & & Definiert, ob Main\_Image oder eine Animation angezeigt wird \\
+    animation & & & Auswahl aus den verschiedenen Animationen der Abteilungen - nur verfügbar, wenn content\_type = animation \\
+    main\_image & & & Hauptbild für dieses Grid-Item \\
+    image\_right & & & Boolescher Wert (default: false) \\
+    link & & & Link, auf den das gesamte Element verweist \\
+    sub\_images & & & Ansammlung von mehreren zusätzlichen Bildern \\
+    allocate & & & Zuordnung zu den Abteilungen \\
+\end{longtable}
+
+\subsubsection*{Headline}
+Headline bietet die Möglichkeit Blöcke ohne Überschrift oder Abschnitten eine passende Überschrift zu geben. Sie beinhaltet nur die Attribute headline und no\_spacing\_y.
+
+\subsubsection*{Hero}
+Hero definiert die Oberste Sektion in all unseren Seiten ausgenommen der Startseite. Die Besonderheit ist das Schräge bild und der zusätzlich mögliche Content.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Hero Blocks}
+    \label{tab:hero}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Große Überschrift \\
+    background\_image & \checkmark & & Bild, welches hinter der Überschrift liegt \\
+    type & \checkmark & & Definiert das Aussehen des Hero Elements \\
+    height & \checkmark & & Setzt die Höhe der Sektion \\
+    fixed & & & Boolescher Wert, der die Position auf absolut setzt (default: false) \\
+    hero\_features & \checkmark & & Blocks Attribut, das mit den Hero Feature Blöcken befüllt werden kann \\
+    additional\_content & & & Wird nur bei News, Events und weiteren verwendet, der gesamte Inhalt befindet sich somit in der Hero Component \\
+\end{longtable}
+
+\subsubsection*{Hero Feature}
+Zusätzliche Information kann hiermit neben dem Hero Block angezeigt werden. Dieser ist wieder konfigurierbar um verschiedene Styles und Funktionen zu ermöglichen.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Hero Feature Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    symbol & & & Bietet eine Auswahl an Symbolen an, die davor angezeigt werden können \\
+    type & \checkmark & & Definiert die Darstellung entweder groß oder klein \\
+    text & & & Dargestellter Text \\
+    link & & & Falls notwendig, kann ein weiterführender Link angegeben werden \\
+\end{longtable}
+
+\subsubsection*{IFrame Container}
+Um IFrames per Storyblok einbauen zu können wurde der IFrame Container Block erstellt, dieser bietet durch den Link die Möglichkeit beliebige IFrames wie Videos, Maps oder Ähnliches einzubinden. 
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des IFrame Container Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    iframe\_content & \checkmark & & Link zu dem einzubindenden IFrame \\
+    links & & & Ansammlung von Custom Link Blocks \\
+    additional\_info & & \checkmark & Formatierbarer Text als Richtext \\
+\end{longtable}
+
+\subsubsection*{Link Collection}
+Ansammlung von Custom Link Blocks falls notwenig auch mit Überschift
+
+\subsubsection*{Marquee}
+Marquee Block bietet die Möglichkeit Content Horizonal automatisch scrollen zu lassen, so wie in einer Slideshow.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Marquee Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    content & $\geq 4$ &  & Ansammlung von Blöcken, die bewegt werden \\
+    reverse\_direction & & & Dreht die Richtung der Marquee um (default: false) \\
+    spacing\_top & & & Abstand oben (default: false) \\
+    spacing\_bottom & & & Abstand unten (default: false) \\
+    display\_all\_mobile & & & Wird der Marquee oder eine vertikale Liste angezeigt (Nur auf Mobilgeräten, default: false) \\
+    speed & & & Definiert die Geschwindigkeit der Marquee \\
+\end{longtable}
+
+\subsubsection*{Navbar}
+So wie der Footer Block ist auch der Navbar Block die Implementierung der Navbar unserer Webseite.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Navbar Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    logo & \checkmark & & Logo, welches angezeigt wird \\
+    logo\_dark & \checkmark & & Logo, welches im Darkmode angezeigt wird \\
+    middle\_nav & & & Ansammlung von den hauptsächlichen Links \\
+    side\_nav & & & Ansammlung von Links auf der rechten Seite \\
+\end{longtable}
+
+\subsubsection*{Scroll Slider}
+Der Scroll Slider Block ist einer unserer Hauptfeatures. Durch ihn wird der horizontale Scroll in einen vertikalen Scroll umgewandelt.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Scroll Slider Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    title & \checkmark & \checkmark & Überschrift \\
+    slider\_table & & & Tabelle, die zusätzliche Informationen anzeigen kann \\
+    scroll\_start\_right & & & Festlegung, ob der Content der Start ist oder nichts \\
+    slider & & & Blocks-Element zur Darstellung der Slider-Blöcke (nur Slider Item) \\
+    alternating & & & Boolescher Wert, der festlegt, ob die Blöcke zentriert sind oder abwechselnd auf der Y-Höhe verschoben sind (default: false) \\
+    scroll\_speed & & & Legt die virtuelle Höhe des Elements fest und somit die Schnelligkeit der seitlichen Verschiebung während des Scrollens \\
+\end{longtable}
+
+\subsubsection*{Scroll Slider Select}
+Scroll Slider Select bietet die selbe Funktionalität wie der Scroll Slider, der Content wird aber nicht durch Blocks sondern durch das auswählen beliebiger 'Article' Blocks festgelegt.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Scroll Slider Select Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    title & \checkmark & \checkmark & Überschrift \\
+    show\_title\_animation & & & Soll die Startanimation (Logo-Schultransformation) abgespielt werden (default: false) \\
+    scroll\_start\_right & & & Festlegung, ob der Content der Start ist oder nichts \\
+    slider & & & Multi-Option zum Wählen der gewünschten Stories. Nur Stories mit dem Typen "Article" werden akzeptiert \\
+    scroll\_speed & & & Legt die virtuelle Höhe des Elements fest und somit die Schnelligkeit der seitlichen Verschiebung während des Scrollens \\
+\end{longtable}
+
+\subsubsection*{Site Jump}
+Site Jump bietet die Möglichkeit zu verschiedenen Überschiften auf der selben Seite zu springen. Diese müssen als Jumplink in den Blocks Attribut 'headlines' angegeben werden und mit den zugeordneten headlines gleich sein. 
+
+\subsubsection*{Slider Item}
+Slider Item realisiert die einzelnen Contentbausteine von Scroll Slider.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Slider Item Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & \checkmark & \checkmark & Überschrift \\
+    subline & & \checkmark & Unterüberschrift \\
+    content & & \checkmark & Formatierbarer Text als Richtext \\
+    image & & & Hauptbild für dieses Element \\
+    allocate & & & Zuordnung zu den Abteilungen \\
+    type & \checkmark & & Definiert den Style des Elements (Event, Kontakt groß/klein, Bewerbung) \\
+\end{longtable}
+
+\subsubsection*{Spacer}
+Der Spacer Block bietet die Möglichkeit falls notwendig mehr platz zwischen 2 Anderen Blöcken auf Y-Ebene einzufügen. Hierfür stehen folgende rem-Werte (2,4,6,8) im Size Attribut bereit.
+
+\subsubsection*{Sponsor}
+Der Sponsor Block wurde entwickelt, da die Sponsoren ein anderes Design benötigen als es mit einem einfachen GridItem Block möglich ist. Die Besonderheit liegt im Ausblenden des zusätzlichen Kontents.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Sponsor Blocks}
+    \label{tab:sponsor}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Name der Firma / des Sponsors \\
+    subline & & \checkmark & Zusätzliche Info zum Sponsor \\
+    image & \checkmark & & Logo des Sponsors \\
+    link & & & Link zur gewünschten Adresse \\
+    only\_image & & & Boolesche Auswahl, ob nur das Logo oder auch die headline und subline angezeigt werden sollen (default: false) \\
+\end{longtable}
+
+
+\subsubsection*{Table}
+Wenn man einen relativ simplen Table benötigt ohne nennenswerte Textformatierung, dann bietet sich dieser Table Block an. Er beinhaltet nur den standardmäßigen Tabel bereitgestellt von einem Storyblok Plugin.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Table Blocks}
+    \label{tab:table}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Überschrift über der Tabelle \\
+    table & \checkmark & & Ein Table als Plugin wird verwendet, dieser kann dann nach Belieben bearbeitet und befüllt werden \\
+\end{longtable}
+
+\subsubsection*{Text}
+Um textuellen Content wie in Datenschutz und auf dem Impressum mit Storyblok editierbar zu machen wurde der Text Block implementiert. 
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Text Blocks}
+    \label{tab:blockname}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Überschrift \\
+    divider & & & Boolescher Wert, ob ein Divider zwischen headline und content angezeigt werden soll (default: false) \\
+    content & & \checkmark & Formatierbarer Text als Richtext \\
+    max\_w & \checkmark & & Legt die maximale Breite des Elements fest \\
+\end{longtable}
+
+
+\subsubsection*{Timetable}
+Der Timetable Block bietet die Möglichkeit einen Stundenplan der HTL digital nachzustellen. Die Attribute sind headline und eine Ansammlung von Timetable Cols Blocks (columns).
+
+\subsubsection*{Timetable Cols}
+Die Timetable Cols spiegeln einen Tag im Stundenplan wieder. Sie beinhalten daher nur einen Text für den Tag (day) und eine Sammlung von Timetable Subject Blocks (subjects).
+
+\subsubsection*{Timetable Subject}
+Timetable Subject ist das wichtigste und am meisten konfigurierbar am Timetable.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Timetable Subject Blocks}
+    \label{tab:fach}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    name & \checkmark & & Name des Faches \\
+    short\_name & \checkmark & & Kurzbezeichnung des Faches \\
+    description & & \checkmark & Beschreibung des Faches \\
+    is\_specialized\_subject & & & Legt fest, ob dieses Fach abteilungsspezifisch ist \\
+    main\_image & \checkmark & & Bild, welches das Fach beschreibt \\
+    color & & & Farbe des Faches, wie in Untis \\
+    jahrgang1-5 & & & Nummerischer Wert, der die Stundenanzahl in den einzelnen Jahren beschreibt \\
+\end{longtable}
+
+\subsubsection*{Value Document}
+Der Value Document Block ist für die Representation des Wertedokuments an der HTL-Leonding. Es wurde eine eigener Block erstellt um ein spezielles Design mit einer Schräge umsetzten zu können.
+\begin{longtable}[c]{p{3cm}ccp{6cm}}
+    \caption{Attribute des Value Document Blocks}
+    \label{tab:dreieck}\\
+    \toprule
+    \textbf{Attribute} & \textbf{R} & \textbf{T} & \textbf{Beschreibung} \\
+    \midrule
+    \endhead
+    %
+    \endfoot
+    %
+    headline & & \checkmark & Überschrift \\
+    subline & & \checkmark & Unterüberschrift \\
+    content & & & Genau 5 Value\_document\_entry Blöcke werden vorausgesetzt \\
+    background\_image & & & Hintergrundbild für das Dreieck auf der Seite \\
+\end{longtable}
+
+\subsubsection*{Value Document Entry}
+Value Document Entry ermöglicht einen Eintrag in das Wertedokument. Die Attribute belaufen sich nur auf die Kernaussage des Wertes 'headline' und auf eine detalierte beschreibung im Richtext-Format (description) 
 
 \subsection{Internationalisierung}
 
