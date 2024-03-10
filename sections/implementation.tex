@@ -658,7 +658,7 @@ Unter \textbf{types} ist ein File \textbf{interface.tsx} zu finden in diesem sin
 
 Unter \textbf{util} befinden sich dann noch 2 Files, welche rein Technische TS Funktionen beinhalten.
 
-\subsubsection*{File}
+\subsubsection*{Files}
 Files im Root-Level des Projekts dienen hauptsächlich zur Konfiguration des Projekts. Dabei handelt es von den Files \textbf{.env.local}, \textbf{middleware.js}, \textbf{next-env.d.ts}, \textbf{next.config.js}, \textbf{package.json} und \textbf{tsconfig.json}.
 
 Bei \textbf{.env.local} handelt es sich um das File, welches im lokalen betrieb (npm run dev), die ganzen Konfigurationen beinhaltet in unseren konkreten fall ist dies nur der \textbf{STORYBLOK\_API\_KEY} und die \textbf{STORYBLOK\_API\_VERSION}.
@@ -683,7 +683,6 @@ Um dies zu ermöglichen wurde ein Catch-all Statement verwendet dies ermöglicht
 
 Die Ordnerstruktur von unseren Projekt sieht also am ende nun so aus /app/[lng]/[...slug]. Der [lng] Ordner wurde dabei absichtlich nicht in [...slug] inkludiert, damit alle Subpages einen eindeutigen zugriff auf den lng Parameter haben. Um nun alle Seiten darstellen zu können muss nur mehr die Page.tsx ertsellt werden, welche im finalen Aufbau sehr simpel erscheint:
 
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{pics/final-page.png}
@@ -695,6 +694,49 @@ Die Ordnerstruktur von unseren Projekt sieht also am ende nun so aus /app/[lng]/
 Nachdem die gerade erstelle Next13 Seite erfolgreich funktionierte wurde das Storyblok Tutorial durchgearbeitet. Im späteren verlauf der Arbeit stellten sich aber immer mehr Probleme im Bezug zu der am Anfang erstellten Verbindung, sodass in der Mitte der Arbeit die Verbindung verändert wurde und am Schluss die komplette API-Schnittstelle selbst implementiert wurde.
 Nicht aber nur das 5 Minuten Start Tutorial war noch nicht auf dem neuesten Stand sondern auch der Großteil der restlichen Tutorails, welche das Zusammenspiel von Next13 und Storyblok erklären sollten waren nicht auf den Aktuellsten Stand beziehungsweise nicht auf den App Router Ansatz ausgelegt.
 
+\subsubsection*{Verheiraten mit Next}
+Nach mehreren Versuchen wurde dann der Storyblok Provider Ansatz gewählt. Dabei handelt es sich um ein Zusammenspiel einer Client Slide Component namens StoryblokProvider und dem Root Level layout.tsx file. Beide Files rufen dabei die storyblokInit() Funktion auf. 
+
+Der StoryblokProvider übernimmt dabei die Aufgabe des Linken der Components zu den Blocks von Storyblok
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/sb-provider-01.png}
+    \caption{Ausschnitt StoryblokProvider.tsx}
+\end{figure}
+
+Alle Componenten werden importiert und mit einem passenden Namen versehen. In einer Variable in diesem Fall const components werden dann alle Storyblok Blöcke den Componenten zugeordnet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/sb-provider-02.png}
+    \caption{Ausschnitt StoryblokProvider.tsx}
+\end{figure}
+
+Diese Ansammlung von Componenten kann dann im der storyblokInit Funktion mitgegeben werden um Storyblok mit den Componenten zu verbinden. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/sb-provider-03.png}
+    \caption{Ausschnitt StoryblokProvider.tsx}
+\end{figure}
+
+\subsubsection*{Datenabfrage}
+Da die von Stroyblok/react/rsc bereitgestellte storyblokApi.get() Funktion keine Cachevalidation unterstützt, wurde die Fetch Funktion neu programmiert. Dabei trat das größte Problem bei den Sub Stories auf. Sonst können diese durch die einfache Angabe der richtigen resolve\_relations Parameter gelöst werden. Wenn aber der API zugriff manuell erfolgt befinden sich die 'Aufgelösten Beziehungen' ganz am Ende des JSONs und müssen manuell an die richtige Stelle transformiert werden. 
+
+Dies wurde durch 2 Funktionen in einem Util File namens storyblok.tsx gelöst. Wobei die fetchData im Grunde genommen nur einen Fetch-Request an die API schickt und dass Ergebnis, dann im return an die weitere Funktion weitergibt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/sb-fetch-01.png}
+    \caption{Fetch an Stroyblok-API}
+\end{figure}
+
+Die andere Funktion, welche man am Ende dieses Codeausschnitts sehen kann ist aber von weitaus größerer Bedeutung. Sie löst das vorhin angesprochene Problem der 'resolve Relations'. Sie speichert alle Verweise und die dazugehörigen originalen Daten. Folgend werden alle Elemente in der Story überprüft ob sie den passenden UUID beinhalten, wenn ja wird der Content ausgetauscht. Diese Erklärung entspricht nicht ganz der Realität, da in der Realität zwischenabfragen die Performance erhöhren somit wird nur die UUID verglichen wenn es sich um das Attribut atricles oder slider handelt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/sb-fetch-02.png}
+    \caption{Datentransformation - Storyblok Fetch}
+\end{figure}
 
 
 \subsection{Packages}
@@ -716,9 +758,15 @@ In Kombination mit postcss autoprefixer ...
 
 \subsection{Komponenten}
 
-\subsection{...}
+\subsubsection*{ScollSlider ScrollSliderSelect}
 
-\subsection{Design}
+\subsubsection*{All Articles}
+
+\subsubsection*{Hero}
+
+\subsubsection*{ValueDokument ValueDokumentEntry}
+
+\subsubsection*{Timetable}
 
 \subsection{Internationalisierung}
 
@@ -726,7 +774,8 @@ In Kombination mit postcss autoprefixer ...
 
 \section{Animationen}
 
-\subsection{Grafiken}
+\subsection{Erstellung}
 
-\subsection{Grafiken}
+\subsection{Einbindung}
+
 
