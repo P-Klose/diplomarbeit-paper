@@ -23,13 +23,16 @@ Stories stellen gesamte Seiten dar, wenn man also die \textbf{/ausbildung/it-med
 Hiermit würde man einen Großteil der Daten bekommen jedoch nicht alle. Verlinkte News, die eine eigene URL besitzen würde man nur als verlinke ID sehen. Um dieses Problem zu lösen bietet Storyblok den sogenannten  \textbf{resolve\_relations} Parameter. Hinter diesen Parameter muss allerdings noch der richtige Verweis angegeben werden in folgenden Format: \textbf{component\_name.field\_name} somit werden dann wirklich alle Daten geladen die benötigt werden um die Seite darzustellen.
 
 \subsection{Internationalisierung}
-Storyblok bietet für die Internationalisierung 3 verschiedene Ansätze: Field Level translation, Folder Level translation und Space Level translation. In dieser Arbeit wurde der \textbf{Field Level Translation} Ansatz gewählt. 
+Storyblok bietet für die Internationalisierung 3 verschiedene Ansätze: Field Level translation, Folder Level translation und Space Level translation. 
+In dieser Arbeit wurde der \textbf{Field Level Translation} Ansatz gewählt. 
 Das Setup dafür schaut wie folgt aus:
 
-Als Erstes müssen in den Einstellungen des Spaces unter dem Reiter 'Internationalization' die gewünschten Sprachen eingestellet werden. In diesen fall war dies 'de' für Deutsch und 'en' für Englisch. 
+Als Erstes müssen in den Einstellungen des Spaces unter dem Reiter 'Internationalization' die gewünschten Sprachen eingestellet werden. 
+In diesen Fall war dies 'de' für Deutsch und 'en' für Englisch. 
 Im Editor kann dann die Sprache auf Englisch gestellt werden und alle Felder, bei denen die Translation Checkbox angehakt ist können übersetzt werden. 
 
-Um diese Sprache dann auch auf der Webseite angezeigt zu bekommen muss bei dem Request an die API am Ende einfach der Parameter \textbf{language=} angeben werden. In diesem Fall wäre dies \textbf{'de'} oder \textbf{'en'}.
+Um diese Sprache dann auch auf der Webseite angezeigt zu bekommen muss bei dem Request an die API am Ende einfach der Parameter \textbf{language=} angeben werden. 
+In diesem Fall wäre dies \textbf{'de'} oder \textbf{'en'}.
 
 
 \subsection{Bausteine der Webseite}
@@ -743,6 +746,14 @@ Die andere Funktion, welche man am Ende dieses Codeausschnitts sehen kann ist ab
 Da es sich bei diesem Projekt um eine Node basierte Architektur handelt wurden einige Packages als Erweiterungen installiert. Packages, welche in Kombination mit Storyblok stehen werden hier noch nicht angeführt und werden in den Unterkapitel Storyblok näher beschrieben werden. Auch Packages wie react und typescript werden hier nicht behandelt, da sie nicht explizit hinzugefügt worden sind und somit die Basis des Projektes bilden.
 
 \subsubsection*{Framer Motion}
+Framer Motion ist eine Animationslibery für React. In dieser Diplomarbeit übernimmt Framer Motion alle Animationen mit ausnahme von den SVG Animationen. Diese werden von React-Lottie abgespielt.
+
+Bevor man Framer Motion verwenen kann muss man es installieren, da es ein Node Package ist, ist dies nicht schwierig: \emph{npm install framer-motion}.
+
+Die Verwendung von Framer Motion ist simpel überall dort wo man es verwenden möchte muss man es importieren: \emph{import \{ motion \} from "framer-motion"}.
+Wenn man also nun aus einem html Tag ein Motion html Tag machen will muss man vor den Tag ein \textbf{motion.} schreiben als Beispiel ein \textless div\textgreater wird zu einem \textless motion.div\textgreater.   
+
+
 
 \subsubsection*{TailwindCss}
 In Kombination mit postcss autoprefixer ...
