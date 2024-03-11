@@ -98,11 +98,11 @@ All diese Attribute haben ein Bearbeitungsfenster, welches von oben nach unten m
 
 Die 2 Wichtigsten sind aber die beiden Checkboxen. Sie ermöglichen uns sicherzustellen, dass der Wert gesetzt werden muss (Checkbox - Notwendig) und dass man ihn falls Notwendig übersetzten kann (Checkbox - Übersetzbar). 
 
-Nachstehen werden diese beiden Checkboxen mit den in Klammern stehenden englischen Buchstaben angezeigt.
+Nachstehen werden diese beiden Checkboxen mit den Spalten T für translateable und R für required dargestellt.
 
 \subsubsection*{Page}
 Der Page-Block war schon vorgefertigt von Storyblok und wurde genau so übernommen.
-Er ist sehr simpel aufgebaut das einzige Attribut, welches er beinhaltet ist body ein Blocks Element.
+Dieser ist sehr simpel aufgebaut. Das einzige Attribut, welches er beinhaltet ist body, ein Blocks Element.
 
 \subsubsection*{Article}
 Article ist der Blok, welcher für News, Projekte, Clubs bzw. Events benutzt wird. 
@@ -169,7 +169,8 @@ All Articles ist in Storyblok ein relativ simpler Block, er dient dazu alle Arti
 \end{longtable}
 
 \subsubsection*{Basic Slider}
-Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem Mouse drag bedient wird. Da dieser aber nicht perfekt in unser UI,UX-Design passt könnte es sein dass er durch den Scroll Slider ersetzt wird.  
+Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem Mouse drag bedient wird. 
+Da dieser Effekt aber nicht mehr in unser UI,UX-Design passt könnte es bei der Finalen Version dazu kommen, dass er durch den Scroll Slider ersetzt wird.
 
 \begin{longtable}[c]{p{3cm}ccp{6cm}}
     \caption{Attribute des Basic Slider Blocks}
@@ -186,7 +187,8 @@ Basic Slider ist wie der Name schon sagt ein einfacher Slider, welcher mit einem
 \end{longtable}
 
 \subsubsection*{Classes}
-Classes stellt die Struktur für die Darstellung der Klassen an der HTL dar. Es handelt sich also um eine Abgeschlossene Sektion als Blok in dem Content sind nur Class Entry Blocks erlaubt.
+Classes stellt die Struktur für die Darstellung der Klassen an der HTL dar. 
+Es handelt sich um eine Abgeschlossene Sektion in seinem Content sind nur Class Entry Blocks erlaubt.
 
 \begin{longtable}[c]{p{3cm}ccp{6cm}}
     \caption{Attribute des Classes Blocks}
@@ -203,7 +205,7 @@ Classes stellt die Struktur für die Darstellung der Klassen an der HTL dar. Es 
 \end{longtable}
 
 \subsubsection*{Classes Entry}
-Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe als Foto ein Klassenfoto.  
+Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe das Schul Klassenfoto als Repräsentation.  
 
 \begin{longtable}[c]{p{3cm}ccp{6cm}}
     \caption{Attribute des Classes Entry Blocks}
@@ -221,7 +223,8 @@ Classes Entry stellt wirklich genau eine Klasse dar. Gedacht währe als Foto ein
 \end{longtable}
 
 \subsubsection*{Custom Image}
-Custom Image dient als Grundlage falls im Frontend spezielle Anforderungen an ein Bild gestellt sind. Wie in Über Uns, wo die Broschüre gedreht ist.  
+Custom Image dient als Grundlage, wenn im Frontend spezielle Anforderungen an ein Bild gestellt sind. 
+Als Beispiel die Broschüre in Über Uns, diese musste gedreht werden.  
 
 \begin{longtable}[c]{p{3cm}ccp{6cm}}
     \caption{Attribute des Custom Image Blocks}
@@ -371,7 +374,7 @@ Grid Item bietet den Content für das Grid um vielseitig einsetzbar zu sein sind
 \end{longtable}
 
 \subsubsection*{Headline}
-Headline bietet die Möglichkeit Blöcke ohne Überschrift oder Abschnitten eine passende Überschrift zu geben. Sie beinhaltet nur die Attribute headline und no\_spacing\_y.
+Headline bietet die Möglichkeit Blöcken ohne Überschrift oder Abschnitten eine passende Überschrift zu geben. Sie beinhaltet nur die Attribute headline und no\_spacing\_y.
 
 \subsubsection*{Hero}
 Hero definiert die Oberste Sektion in all unseren Seiten ausgenommen der Startseite. Die Besonderheit ist das Schräge bild und der zusätzlich mögliche Content.
@@ -641,8 +644,8 @@ Value Document Entry ermöglicht einen Eintrag in das Wertedokument. Die Attribu
 
 \section{Next}
 
-Am start dieses Projekts war Next13 die neuste Version und somit wurde dieses Projekt auch mit Next13 in Verbindung mit dem App Router erstellt.
-Dies geschah durch den Befehl \emph{npx create-next-app@latest} dadurch war auch die gesamte Ordnerstruktur des Projekts fertig und die Template Seite konnte mit \emph{npm run dev} gestartet werden und auf \textbf{localhost:3000} aufgerufen werden.
+Am Start dieses Projekts war Next.js 13 die neuste Version und somit wurde dieses Projekt auch mit Next.js 13 in Verbindung mit dem neuen App Router erstellt.
+Dies geschah durch den Befehl \emph{npx create-next-app@latest} dadurch war auch die gesamte Ordnerstruktur des Projekts fertig und die Template Seite konnte mit \emph{npm run dev} gestartet und auf \textbf{localhost:3000} aufgerufen werden.
 
 \subsection{Struktur}
 \subsubsection*{Folder}
@@ -651,13 +654,14 @@ Der public Ordner ist dabei für statische Assets verantwortlich. In unserer Imp
 Der app Ordner ist aber der wichtigste in dem ganzen Projekt er ist wie schon vorher erwähnt zuständig für das Routing der gesamten Webseite. 
 
 
-Speziell von uns erstellt wurden die Ordner \textbf{animations}, \textbf{conponents}, \textbf{types} und \textbf{util} um eine bessere Übersicht über das Projekt zu erhalten. In den Ordnern befinden sich dann die dazugehörigen Daten.
+Speziell von uns erstellt wurden die Ordner \textbf{animations}, \textbf{conponents}, \textbf{types} und \textbf{util} um eine bessere Übersicht über das Projekt zu erhalten. 
+In den Ordnern befinden sich dann die dazugehörigen Dateien.
 
 Unter \textbf{animations} sind dies alle exportierten Animation die auf der Webseite angezeigt werden sollen im JSON-Format. 
 
 Unter \textbf{components} sind alle erstellen Components, wiederum aufgeteilt in Unterordner um eine Struktur zu bewahren. Das wichtigste File in components ist aber der \textbf{StoryblokProvider.tsx}, dieser ermöglicht die Verbindung zwischen Storyblok und Next.
 
-Unter \textbf{types} ist ein File \textbf{interface.tsx} zu finden in diesem sind alle TS-Typen für das ganze Projekt festgehalten.
+Unter \textbf{types} ist das File \textbf{interface.tsx} zu finden in diesem sind alle TS-Typen für das ganze Projekt festgehalten.
 
 Unter \textbf{util} befinden sich dann noch 2 Files, welche rein Technische TS Funktionen beinhalten.
 
@@ -678,13 +682,14 @@ In \textbf{package.json} befinden sich die Abhängigkeiten und Skripte des Proje
 
 \subsection{Routing}
 Um die Rute mywebsite.com/products/shoes/newest zu realisieren müsste man im App Router (Ordner app) 3 Unterordner erstellen sodass folgenden Ordnerstruktur entsteht app/products/shoes/newest. Bei Statischen Seiten, wo der Content als HTML gepflegt wird macht dies auch Sinn. All das was man nacher auf der Webseite sehen will muss in das 'page.tsx' File an der Richtigen Stelle. 
-Da es sich aber bei Storyblok um dynamisch generierte Seiten handelt, bei denen man auch zusätzlich schon die Pfadstruktur anhand der Ordner und Seiten festlegt wurde dieser Ansatz nicht geweht. Bei Änderungen der Struktur in Storyblok könnte es sein, dass die Seite gar nichtmehr funktioniert. 
+Da es sich aber bei Storyblok um dynamisch generierte Seiten handelt, bei denen man auch zusätzlich schon die Pfadstruktur anhand der Ordner und Seiten in Storyblok festlegt wurde dieser Ansatz nicht geweht. Bei Änderungen der Struktur in Storyblok könnte es sein, dass die Seite gar nichtmehr funktioniert. 
 
 Die Lösung dafür waren dynamische Routen realisierbar durch Ordner, bei denen der name in Eckigen Klammern stand ein sogenannter [Dynamic Segment] Ordner. Bei diesem Ordner handelt es sich um einen Teilweise Dynamischen Pfad, er macht nämlich nur diese eine Stelle im Pfad dynamisch. Ein Beispiel dafür wäre app/blog/[slug]/page.tsx Pfade wie /blog/a /blog/b blog/b funktionieren alle, wenn man aber /blog/a/b eingibt ist dies nicht mehr möglich. 
 
-Um dies zu ermöglichen wurde ein Catch-all Statement verwendet dies ermöglicht ein Match aller weiteren Elemente und durch einen Ordner mit dem Namen [...slug] bei uns realisiert.
+Um dies zu ermöglichen wurde ein Catch-all Statement verwendet dies ermöglicht ein Match aller weiteren Elemente. Dies wurde durch einen Ordner mit dem Namen [...slug] realisiert.
 
-Die Ordnerstruktur von unseren Projekt sieht also am ende nun so aus /app/[lng]/[...slug]. Der [lng] Ordner wurde dabei absichtlich nicht in [...slug] inkludiert, damit alle Subpages einen eindeutigen zugriff auf den lng Parameter haben. Um nun alle Seiten darstellen zu können muss nur mehr die Page.tsx ertsellt werden, welche im finalen Aufbau sehr simpel erscheint:
+Die Ordnerstruktur des Projekt sieht also am ende so aus /app/[lng]/[...slug]. Der [lng] Ordner wurde dabei absichtlich nicht in [...slug] inkludiert, damit alle Subpages einen eindeutigen zugriff auf den lng Parameter haben. 
+Um nun alle Seiten darstellen zu können muss nur mehr die Page.tsx ertsellt werden, welche im finalen Aufbau sehr simpel erscheint:
 
 \begin{figure}[h]
     \centering
@@ -700,7 +705,7 @@ Nicht aber nur das 5 Minuten Start Tutorial war noch nicht auf dem neuesten Stan
 \subsubsection*{Verheiraten mit Next}
 Nach mehreren Versuchen wurde dann der Storyblok Provider Ansatz gewählt. Dabei handelt es sich um ein Zusammenspiel einer Client Slide Component namens StoryblokProvider und dem Root Level layout.tsx file. Beide Files rufen dabei die storyblokInit() Funktion auf. 
 
-Der StoryblokProvider übernimmt dabei die Aufgabe des Linken der Components zu den Blocks von Storyblok
+Der StoryblokProvider übernimmt dabei die Aufgabe des Linken der Components zu den Blocks von Storyblok.
 
 \begin{figure}[H]
     \centering
@@ -725,9 +730,13 @@ Diese Ansammlung von Componenten kann dann im der storyblokInit Funktion mitgege
 \end{figure}
 
 \subsubsection*{Datenabfrage}
-Da die von Stroyblok/react/rsc bereitgestellte storyblokApi.get() Funktion keine Cachevalidation unterstützt, wurde die Fetch Funktion neu programmiert. Dabei trat das größte Problem bei den Sub Stories auf. Sonst können diese durch die einfache Angabe der richtigen resolve\_relations Parameter gelöst werden. Wenn aber der API zugriff manuell erfolgt befinden sich die 'Aufgelösten Beziehungen' ganz am Ende des JSONs und müssen manuell an die richtige Stelle transformiert werden. 
+Da die von Stroyblok/react/rsc bereitgestellte storyblokApi.get() Funktion keine Next revalidation unterstützt, wurde der GET Request mittels JS fetch ausprogrammiert. 
+Dabei trat das größte Problem bei den Sub-Stories auf. 
+Sonst können diese durch die einfache Angabe der richtigen resolve\_relations Parameter gelöst werden. 
+Wenn aber der API zugriff manuell erfolgt, befinden sich die 'Aufgelösten Beziehungen' ganz am Ende des JSONs und müssen manuell an die richtige Stelle transformiert werden. 
 
-Dies wurde durch 2 Funktionen in einem Util File namens storyblok.tsx gelöst. Wobei die fetchData im Grunde genommen nur einen Fetch-Request an die API schickt und dass Ergebnis, dann im return an die weitere Funktion weitergibt.
+Dies wurde durch 2 Funktionen in einem Util File namens storyblok.tsx gelöst. 
+Wobei die fetchData im Grunde genommen nur einen Fetch-Request an die API schickt und dass Ergebnis, dann im return an die weitere Funktion weitergibt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{pics/sb-fetch-01.png}
@@ -743,7 +752,8 @@ Die andere Funktion, welche man am Ende dieses Codeausschnitts sehen kann ist ab
 
 
 \subsection{Packages}
-Da es sich bei diesem Projekt um eine Node basierte Architektur handelt wurden einige Packages als Erweiterungen installiert. Packages, welche in Kombination mit Storyblok stehen werden hier noch nicht angeführt und werden in den Unterkapitel Storyblok näher beschrieben werden. Auch Packages wie react und typescript werden hier nicht behandelt, da sie nicht explizit hinzugefügt worden sind und somit die Basis des Projektes bilden.
+Da es sich bei diesem Projekt um eine Node basierte Architektur handelt wurden einige Packages als Erweiterungen installiert. 
+Packages, welche in Kombination mit Storyblok stehen werden hier nicht angeführt und werden in den Unterkapitel Storyblok näher beschrieben werden. Auch Packages wie react und typescript werden hier nicht behandelt, da sie nicht explizit hinzugefügt worden sind und somit die Basis des Projektes bilden.
 
 \subsubsection*{Framer Motion}
 Framer Motion ist eine Animationslibery für React. In dieser Diplomarbeit übernimmt Framer Motion alle Animationen mit ausnahme von den SVG Animationen. Diese werden von React-Lottie abgespielt.
