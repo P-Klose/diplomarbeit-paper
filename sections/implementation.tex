@@ -643,6 +643,7 @@ Der Value Document Block ist für die Representation des Wertedokuments an der H
 Value Document Entry ermöglicht einen Eintrag in das Wertedokument. Die Attribute belaufen sich nur auf die Kernaussage des Wertes 'headline' und auf eine detalierte beschreibung im Richtext-Format (description) 
 
 \section{Next}
+\setauthor{Peter Klose}
 
 Am Start dieses Projekts war Next.js 13 die neuste Version und somit wurde dieses Projekt auch mit Next.js 13 in Verbindung mit dem neuen App Router erstellt.
 Dies geschah durch den Befehl \emph{npx create-next-app@latest} dadurch war auch die gesamte Ordnerstruktur des Projekts fertig und die Template Seite konnte mit \emph{npm run dev} gestartet und auf \textbf{localhost:3000} aufgerufen werden.
@@ -779,7 +780,12 @@ In Kombination mit postcss autoprefixer ...
 
 \subsection{Komponenten}
 
-\subsubsection*{ScollSlider ScrollSliderSelect}
+Für fast jeden Block im Storyblok-Backend wurde in Next eine Komponente erstellt. Die Daten werden dann mithilfe von TypeScript typisiert übergeben und können so richtig dargestellt werden. Da die meisten Komponenten sehr logisch Strukturiert und aufgebaut sind wird hier nicht mehr weiter darauf eingegangen. Die folgenden Komponenten die dennoch beschrieben werden weichen von den vorher angemerkten Eigenschaften ab, da sie spezielle Berechnungen beinhalten, eine andere Datenstruktur aufweisen und die Hauptaugenmerke unserer Webseite darbieten.
+
+\subsubsection*{ScollSlider und ScrollSliderSelect}
+
+Die wichtigste und die auffälligste Komponente ist dabei der ScrollSlider bzw. der ScrollSlider mit Select beziehungsweise Latest Funktion. 
+Diese Kombination bieten die Möglichkeit den Scroll von der Y-Achse in die X-Achse zu transformiert. Man scrollt also nicht mehr wie gewohnt von Oben nach Unten sondern von Links nach Rechts. Dies bietet einerseits die Möglichkeit den Benutzer auf den angezeigten Content zu fokussieren indem der Flow der Webseite unterbrochen wird. 
 
 \subsubsection*{All Articles}
 
