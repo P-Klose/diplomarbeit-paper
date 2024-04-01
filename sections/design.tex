@@ -171,9 +171,10 @@ wird, entsteht am Ende ein optimiertes und finales Design.
 Dieses beinhaltet folgende Designelemente und unterscheidet sich in diesen Punkten zu der Gestaltung der bisherigen HTL-Website:
 
 
-\subsection{Menu und Inhalt}
+\subsection{Benutzerfreundlichkeit}
 \setauthor{Angerer Mona}
-   Im Vergleich zum alten Menu-Header (Siehe Abbildung \ref{fig:impl:header:alt}) hat der Neue (Siehe Abbildung \ref{fig:impl:header:neu}) statt 7 nur mehr 5 Elemente, um eine sauberere
+Ein wesentlicher Aspekt jeder Hompage sollte die Benutzerfreundlichkeit sein, da sie bestimmt, wie gerne und lange die User die Website bedienen.   
+Im Vergleich zum alten Menu-Header (Siehe Abbildung \ref{fig:impl:header:alt}) hat der Neue (Siehe Abbildung \ref{fig:impl:header:neu}) statt 7 nur mehr 5 Elemente, um eine sauberere
    Ansicht zu schaffen und Verwirrung in der Navigation zu vermeiden. Die Inhalte aus dem Reiter \glqq News\grqq{} können nun durch einen Link auf der Seite
    \glqq Über uns\glqq{} erreicht werden, die Partnerfirmen stehen nun auf der Startseite. Der Menüpunkt \glqq Schüler:innen\grqq{} ist nun
    aum rechten Bildschirmrand platziert, um die Hauptelemente des Headers erneut zu vermindern und um eine Art \glqq Profil\grqq{}
@@ -196,6 +197,10 @@ Dieses beinhaltet folgende Designelemente und unterscheidet sich in diesen Punkt
    \label{fig:impl:header:neu}
 \end{figure}
 
+Auch wird um die englischsprachigen SchülerInnen und Benutzer anzusprechen im Menuheader die Möglichkeit eines einfachen
+Wechsels von Deutsch auf Englisch angeboten. Dies erfolgt über ein Icon welches eine Weltkugel symbolisiert und daneben das Kürzel der
+Sprache anzeigt, zu der man mittels eines einfachen Klicks wechseln kann. 
+
 \subsection{Farben und Formen}
 \setauthor{Angerer Mona}
 Da die bisherige Website sehr viele Farben beinhaltete, erschien sie überladen und überfordernd.
@@ -212,6 +217,15 @@ implementierung des Dreiecks auf den unterschiedlichen Seiten der Website spiege
 die man bereits im Logo findet, wieder. Auch erscheint der Gesamteindruck
 dynamischer und spannender, was zu einer verbesserten User-Experience führt.
 
+\begin{figure}
+   \begin{minipage}[b]{\linewidth} 
+      \includegraphics[scale=0.3]{pics/Farbpalette.png}
+      \caption{Farbpalette HTL Leonding}
+      \label{fig:impl:Farbpalette}
+   \end{minipage}
+   \hspace{.05\linewidth}
+\end{figure}
+
 \subsection{Dynamik und Bewegung}
 \setauthor{Angerer Mona}
 Nicht nur die wiederholte Einbringung des nicht-typischen, wandelbaren Elements des Dreiecks
@@ -223,11 +237,45 @@ auf der Seite "Abteilungen", wo sich eine Übersicht der Fächernamen von links 
 wo sich eine Reihe von Bildern, die die Fachrichtung beschreiben, sich vertikal über das Display bewegt.
 
 
-\subsection{Animationen}
+\subsection{Grafiken und Animationen}
 \setauthor{Angerer Mona}
-Um das durch den vielen Whitespace erzeugte schlichte Design etwas aufzubrechen, wurde eine Strartanimation,
-sowie Animationen für jede Abteilung eingefügt. Die Startanimation, die beim Aufrufen der Website 
-abgespielt wird, beginnt mit dem HTL Leonding-Logo mit dem Schriftzug "HTL Leonding next level", geht dazu über dass 
-der Schriftzug verschwindet, sich das Logo in die Mitte des Bildschrims bewegt und  in eine vereinfachte Graifk der HTL von oben verwandelt.
-In der Schlussposition befindet sich die Grafik der HTL am rechten Bildschirmrand und die 
-wichtigsten Events scrollen aus dem Gebäude. 
+In der Gestaltung der Website wurde bewusst der Einsatz von Animationen und grafischen Elementen gewählt, 
+um das schlichte Design, welches durch den großzügigen Einsatz von Whitespace entstanden ist, gezielt aufzulockern und 
+zu bereichern. Durch das Hinzufügen einer Startanimation beim Laden der Website sowie individuellen Animationen für jede 
+Abteilung wird eine dynamische und ansprechende Benutzererfahrung geschaffen. Ergänzend dazu wurden gezielte Grafiken und 
+Illustrationen eingeführt, die nicht nur ästhetisch ansprechend sind, sondern auch dazu dienen, komplexe Informationen visuell 
+darzustellen und den Inhalt der Website aufzuwerten.
+
+Diese Animationen und Grafiken dienen nicht nur der reinen Ästhetik, sondern haben auch funktionale Aspekte. 
+Sie führen den Benutzer intuitiv durch die Website, lenken die Aufmerksamkeit auf wichtige Informationen und verbessern die 
+Gesamtusability. Darüber hinaus tragen sie dazu bei, die Identität und das Branding der HTL-Website zu stärken, indem sie ein 
+kohärentes und durchdachtes Benutzererlebnis bieten.
+
+Durch die Integration von animierten Grafiken und visuellen Elementen wird das Engagement der Benutzer erhöht und ein 
+interaktiveres Erlebnis geschaffen. Die sorgfältig ausgewählten Grafiken unterstützen die Inhalte der Website, machen diese 
+zugänglicher und erleichtern das Verständnis komplexer Themen. Insgesamt unterstützen die Animationen und Grafiken das Ziel der Homepage, 
+den Besuchern einen informativen, ansprechenden und nahtlosen Zugang zu den verschiedenen Abteilungen und Inhalten zu ermöglichen, 
+während sie gleichzeitig das Markenimage der HTL stärken.
+
+
+\subsection{Dark Mode}
+\setauthor{Angerer Mona}
+
+Für eine benutzerfreundliche und adaptive Website-Erfahrung wurde die Implementierung eines Dark Modes vorgenommen, 
+der sich automatisch an die Computereinstellungen des Nutzers anpasst. Diese Funktion berücksichtigt die systemweiten Einstellungen 
+des Benutzers und schaltet automatisch zwischen dem hellen und dem dunklen Modus um, je nachdem, welche Einstellung auf dem jeweiligen 
+Gerät aktiviert ist. Dies unterscheidet sich maßgeblich von der aktuellen HTL-Homepage, auf der der Dark-Mode auf der Weboberfläche manuell
+an- oder ausgestellt werden musste. Durch diese Anpassungsfähigkeit wird nicht nur die Lesbarkeit und der visuelle Komfort für den Benutzer 
+verbessert, sondern es wird auch ein nahtloses und konsistentes Benutzererlebnis über verschiedene Geräte und Plattformen hinweg 
+gewährleistet. Diese automatische Anpassung des Dark Modes an die individuellen Computereinstellungen reflektiert die Bestrebungen, 
+die Website so benutzerzentriert und zugänglich wie möglich zu gestalten, indem sie den persönlichen Vorlieben und Bedürfnissen der
+Nutzer gerecht wird.
+
+\begin{figure}
+   \begin{minipage}[b]{\linewidth} 
+      \includegraphics[scale=0.3]{pics/Example_Darkmode.png}
+      \caption{Beispiel Dark-Mode}
+      \label{fig:impl:example_darkmode}
+   \end{minipage}
+   \hspace{.05\linewidth}
+\end{figure}
