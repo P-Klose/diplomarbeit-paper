@@ -757,26 +757,34 @@ Da es sich bei diesem Projekt um eine Node basierte Architektur handelt wurden e
 Packages, welche in Kombination mit Storyblok stehen werden hier nicht angeführt und werden in den Unterkapitel Storyblok näher beschrieben werden. Auch Packages wie react und typescript werden hier nicht behandelt, da sie nicht explizit hinzugefügt worden sind und somit die Basis des Projektes bilden.
 
 \subsubsection*{Framer Motion}
-Framer Motion ist eine Animationslibery für React. In dieser Diplomarbeit übernimmt Framer Motion alle Animationen mit ausnahme von den SVG Animationen. Diese werden von React-Lottie abgespielt.
+Framer Motion ist eine Animationsbibliothek für React. In dieser Diplomarbeit übernimmt Framer Motion alle Animationen mit Ausnahme von den SVG Animationen. Diese werden von React-Lottie abgespielt.
 
-Bevor man Framer Motion verwenen kann muss man es installieren, da es ein Node Package ist, ist dies nicht schwierig: \emph{npm install framer-motion}.
+Bevor man Framer Motion verwenden kann muss man es installieren, da es ein Node-Package ist, ist dies nicht schwierig: \emph{npm install framer-motion}.
 
-Die Verwendung von Framer Motion ist simpel überall dort wo man es verwenden möchte muss man es importieren: \emph{import \{ motion \} from "framer-motion"}.
+Die Verwendung von Framer Motion ist simpel überall dort wo es verwendet werden soll muss man es importieren: \emph{import \{ motion \} from "framer-motion"}.
 Wenn man also nun aus einem html Tag ein Motion html Tag machen will muss man vor den Tag ein \textbf{motion.} schreiben als Beispiel ein \textless div\textgreater wird zu einem \textless motion.div\textgreater.   
 
 
 
 \subsubsection*{TailwindCss}
-In Kombination mit postcss autoprefixer ...
+Tailwind CSS ist ein modernes Utility-First-CSS-Framework für das Erstellen von benutzerdefinierten und skalierbaren Designs. Mit einer umfangreichen Sammlung von vorgefertigten Utility-Klassen können schnell und einfach flexible Layouts und ansprechende Benutzeroberflächen erstellt werden. Durch die Verwendung von Tailwind CSS kann der HTML-Code vereinfacht und gleichzeitig die Flexibilität bewahrt werden, um maßgeschneiderte Designs zu erstellen. 
+
+Die Installation von Tailwind CSS ist unkompliziert über npm möglich: \emph{npm install tailwindcss}. Nach der Installation kann Tailwind CSS einfach in das Projekt integriert und in HTML-Dateien verwendet werden.
 
 \subsubsection*{React Lottie}
-... Lottie einbinden
+React Lottie ist eine React-Komponente, die die Integration von animierten Lottie-Dateien in React-Anwendungen ermöglicht. Lottie ist ein von Airbnb entwickeltes Tool, das es Designern ermöglicht, komplexe Animationen zu erstellen und sie als JSON-Dateien zu exportieren. Diese JSON-Dateien können dann mit React Lottie in React-Anwendungen eingebettet und abgespielt werden. 
+
+Mit React Lottie können Entwickler ansprechende Animationen in ihre Anwendungen integrieren, um die Benutzererfahrung zu verbessern. Die Installation von React Lottie erfolgt über npm: \emph{npm install react-lottie}.
 
 \subsubsection*{React Icons}
-... Icons einbinden
+React Icons ist eine Sammlung von vorgefertigten Icons, die als React-Komponenten bereitgestellt werden. Diese Icons können einfach in React-Anwendungen eingebettet und angepasst werden, um eine ansprechende Benutzeroberfläche zu erstellen. React Icons bietet eine Vielzahl von Symbolen und Symbolbibliotheken, darunter Font Awesome, Material Icons und mehr. 
+
+Die Integration von React Icons in ein Projekt erfordert lediglich die Installation des Pakets über npm: \emph{npm install react-icons}.
 
 \subsubsection*{React Fast Marquee}
-... Libery, die eine Marquee kinfigurierbare Marquee bereitstellt.
+React Fast Marquee ist eine React-Komponente, die das einfache Hinzufügen von horizontalen Scrollanimationen zu Elementen ermöglicht. Diese Komponente eignet sich ideal für das Erstellen von animierten Laufbändern, Bildergalerien und anderen interaktiven Elementen, die horizontal scrollen. React Fast Marquee bietet eine schnelle und effiziente Möglichkeit, Scrollanimationen zu implementieren, ohne aufwändige Konfigurationen oder zusätzliche Abhängigkeiten. 
+
+Die Installation von React Fast Marquee erfolgt über npm: \emph{npm install react-fast-marquee}.
 
 \subsection{Komponenten}
 
@@ -784,20 +792,118 @@ Für fast jeden Block im Storyblok-Backend wurde in Next eine Komponente erstell
 
 \subsubsection*{ScollSlider und ScrollSliderSelect}
 
-Die wichtigste und die auffälligste Komponente ist dabei der ScrollSlider bzw. der ScrollSlider mit Select beziehungsweise Latest Funktion. 
-Diese Kombination bieten die Möglichkeit den Scroll von der Y-Achse in die X-Achse zu transformiert. Man scrollt also nicht mehr wie gewohnt von Oben nach Unten sondern von Links nach Rechts. Dies bietet einerseits die Möglichkeit den Benutzer auf den angezeigten Content zu fokussieren indem der Flow der Webseite unterbrochen wird. 
+Die wichtigste und auffälligste Komponente ist dabei der ScrollSlider, insbesondere der ScrollSlider mit den Funktionen Select oder Latest. Diese Kombination bietet die Möglichkeit, den Bildlauf von der Y-Achse zur X-Achse zu transformieren. Dadurch scrollt der Benutzer nicht mehr wie gewohnt von oben nach unten, sondern von links nach rechts. Auf diese Weise wird der Fokus des Benutzers auf den angezeigten Inhalt gelenkt, da der normale Fluss der Webseite unterbrochen wird.
+
+Der ScrollSlider lässt sich in drei Varianten unterteilen: Select, News und Custom.
+
+Beim Select ScrollSlider können beliebige Blöcke, die den Typen Article besitzen, ausgewählt und angezeigt werden.
+Beim News-Slider wird der Select ScrollSlider so umfunktioniert, dass automatisch die letzten x Neuigkeiten geladen werden; standardmäßig sind dies 5 Stück.
+Die Custom-Variante des ScrollSliders enthält eine beliebige Anzahl von SliderItems, die mit unterschiedlichstem Inhalt gefüllt sein können.
+
+Die technische Realisierung wurde so gestaltet, dass die Bildschirmbreite des Fensters ermittelt wird und der Inhalt dann am Anfang des Fensters platziert wird. 
+Darüber hinaus ist von jedem Element im Slider die Breite bekannt, sodass die virtuelle Breite optimal ausgenutzt werden kann. 
+Die Grundlage dafür bildete ein YouTube-Tutorial mit dem Titel \emph{Horizontal Scrolling Animation with React and Framer Motion} von \emph{Tom Is Loading}. Link: \emph{https://www.youtube.com/watch?v=4ehYkfh7P-I}. 
+
+\begin{figure}[H]
+    \begin{minipage}[b]{.4\linewidth} 
+        \includegraphics[width=\linewidth]{pics/scrollslider.png}
+        \caption{ScrollSlider Funktionsweise}
+        \label{fig:impl:scrollslider}
+    \end{minipage}
+    \hspace{.05\linewidth}
+    \begin{minipage}[b]{.4\linewidth}
+        \includegraphics[width=\linewidth]{pics/scrollslider.png}
+        \caption{ScrollSlider Funktionsweise}
+        \label{fig:impl:scrollslider}
+    \end{minipage}
+ \end{figure}
+
+Nach Implementierung dieses Tutorials wurde folgender Stand erreicht: Die blaue Box repräsentiert den typischen vertikalen Scrollverlauf auf der Webseite. Dieser Scrollwert wird dann prozentual auf die gelbe Box übertragen. Die gelbe Box wird somit um denselben Prozentwert nach links verschoben, wie der Benutzer nach unten scrollt. Dadurch bleibt für den Benutzer der Webseite immer nur der Bereich sichtbar, der sich innerhalb der rot gestrichelten Box befindet.
+
+Diese Grundlage musste weiter bearbeitet werden, um dynamischen Inhalt zu akzeptieren, da bisher alle Breiten, die für die x-y-Transformation benötigt wurden, fest vorgegeben waren. Diese Berechnung reagiert auf das Laden der Seite, und die Breite bezieht sich auf das window-Objekt. Aus diesen Gründen ist eine dynamische Skalierung wie bei Media Queries in CSS nicht möglich. Wenn die Seitengröße verändert wird, muss die Seite neu geladen werden, damit sie korrekt dargestellt wird.
 
 \subsubsection*{All Articles}
 
+Eine weitere wichtige Komponentenrealisierung ist die All Articles Component. 
+
+Die Funktion "All Articles" ermöglicht es, alle Artikel eines bestimmten Typs anzuzeigen, wofür innerhalb der Komponente eine eigene Fetch-Anfrage ausgeführt wird. Darüber hinaus bietet "All Articles" auch die Möglichkeit zur Filterung und zur Begrenzung der Seiten (beispielsweise 20 Artikel pro Seite, dann Seite 2).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/allArticles.png}
+    \caption{All Articles - Parameter}
+    \label{fig:impl:allarticles:url}
+\end{figure} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/allArticlesFetch.png}
+    \caption{All Articles - Fetch}
+    \label{fig:impl:allarticles:fetch}
+\end{figure}
+
+Um die richtigen Artikel zu erhalten, wird zunächst die Anfrage-URL zusammengestellt (siehe Abbildung \ref{fig:impl:allarticles:url}).
+
+Anschließend wird im Antwort-Header der Wert total ausgelesen, um die maximale Seitenzahl berechnen zu können (siehe Abbildung \ref{fig:impl:allarticles:fetch}).
+
 \subsubsection*{Hero}
+
+Die Hero-Komponente bildet den obersten Teil der Webseite, ausgenommen der Startseite, auf der die Startanimation zu finden ist. Unser Hero zeichnet sich durch eine seitliche Schräge aus, die sich durch das gesamte Design der Webseite zieht. Auf diesem schrägen Banner, der sich ausschließlich rechts befindet, steht in großer weißer Schrift die Überschrift für die aufgerufene Seite. Als Hintergrund für den resultierenden Deltoiden wird ein thematisch passendes Bild verwendet.
 
 \subsubsection*{ValueDokument ValueDokumentEntry}
 
+Für die Darstellung der Werte der HTL wurden die Komponenten ValueDocument und ValueDocumentEntry erstellt. 
+Eine große Herausforderung bestand darin, den Inhalt schräg zu positionieren oder den Text so zu platzieren, dass es den Anschein hat, als wäre er schräg platziert. 
+Dies wurde wie folgt umgesetzt: Das Bild und der farbige Hintergrund wurden einfach per clip-path abgeschnitten. 
+Der restliche Inhalt wurde durch dynamisches Margin so platziert, dass der Text nicht mehr abgeschnitten wird.
+
 \subsubsection*{Timetable}
+
+Um den Stundenplan der HTL anschaulich zu gestalten, wurde eine Timetable-Komponente entwickelt. 
+Im Vollbildmodus wird ein virtueller Stundenplan angezeigt, der wie eine Kombination aus Stundenplänen aller fünf Jahre aussieht. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pics/timetable-big.png}
+    \caption{Stundenplan und Beschreibung}
+    \label{fig:impl:timetable}
+\end{figure} 
+
+Auf Mobilgeräten wird aufgrund des begrenzten Platzes eine zweispaltige Liste angezeigt. 
+Dabei werden zunächst die Spezialfächer und anschließend die normalen Fächer aufgelistet. 
+In beiden Designs werden die Farben der Fächer von WebUntis verwendet. 
+Da die Abkürzung allein relativ wenig über das Fach aussagt, wurde zusätzlich ein Feld entwickelt, das nach dem Klicken auf das Fach weitere Informationen anzeigt (siehe Abbildung \ref{fig:impl:timetable} rechts).
+
+\begin{figure}
+    \begin{minipage}[b]{.4\linewidth} 
+       \includegraphics[width=\linewidth]{pics/timetable-allg.png}
+       \caption{}
+       \label{fig:impl:timetable_allg}
+    \end{minipage}
+    \hspace{.05\linewidth}
+    \begin{minipage}[b]{.4\linewidth}
+       \includegraphics[width=\linewidth]{pics/timetable-spez.png}
+       \caption{}
+       \label{fig:impl:timetable_spez}
+    \end{minipage}
+ \end{figure}
 
 \subsection{Internationalisierung}
 
+Ein weiterer wichtiger Teil, der erst gegen Ende der Arbeit realisiert wurde, war die Internationalisierung. 
+Hierbei stieß man jedoch auf Schwierigkeiten durch die Verwendung des neuen Next.js 13. 
+Aufgrund der Nutzung dieses neuen Frameworks war es nicht mehr möglich, die automatische I18N Internationalisierung zu verwenden, weshalb man sie manuell implementieren musste. 
+Unter Zuhilfenahme der offiziellen Next-Dokumentation, Stack Overflow und einigen Anpassungen an generiertem Code wurde dann die Middleware.js entwickelt, die die Internationalisierung handhabte.
+
+Dies funktioniert, indem am Anfang der URL ein /de oder /en steht (Beispiel: www.htl-leonding.at/de). 
+Wenn jedoch eine Seite ohne richtigen Sprachenparameter aufgerufen wird, passt die Middleware den Aufruf so an, dass die URL entsprechend dem aktuellen Standort des Endbenutzers die Sprache verwendet. 
+Die ausgewählte Sprache ist außerdem wichtig, da sie für die Storyblok-Anfragen benötigt wird, damit die richtigen Daten angezeigt werden.
+
+Da Flaggen zum Wechseln der Sprachen nicht in unser Design passen, wurde für den Wechsel ein einfacher illustrierter Globus mit einem zusätzlichen Code (DE für Deutsch und EN für Englisch) verwendet.
+
 \subsection{Deployment}
+
+Der letzte Teil der Arbeit beinhaltete das Deployment der erstellten Seite, um einen realen Betrieb zu simulieren. Dieser Vorgang wurde durch die Verwendung von Vercel und die Erstellung des Projekts in der CLI sowie der daraus resultierenden Ordnerstruktur sehr vereinfacht. In Vercel musste lediglich das GitHub-Repository verlinkt werden, und durch die unveränderte Ordnerstruktur wurde das Next.js 13 Projekt erkannt. Anschließend wurden nur noch die Schlüssel konfiguriert, die sonst in der .env Datei zu finden waren. Danach musste man nur noch kurz warten, und die Seite war auf Vercel gehostet. Ein Problem, das dabei auftrat, war, dass es nicht eindeutig im Fehler erkennbar war, wenn kein Schlüssel übergeben wurde. Des Weiteren wurden auch einige TypeScript-Probleme im Code aufgezeigt, die während der Entwicklung ignoriert worden waren. Nachdem diese Probleme jedoch schnell behoben wurden, war das Deployment inklusive der GitHub-Pipeline abgeschlossen.
 
 \section{Animationen}
 
