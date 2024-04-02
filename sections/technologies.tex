@@ -3,14 +3,14 @@
 
 Storyblok ist ein Headless Context Management System (CMS), welches von einem Absolventen unserer Schule mitentwickelt worden ist.
 Dessen Verwendung ist auch die einzige Vorgabe, die seitens der Schule für die Umsetzung der Dipolarbeit gestellt wurde. 
-Ein reguläres CMS, unter anderem Wordpress, mit dem die bisherige HTL-Website umgesetzt wurde, ist eine Softwareprodukt, 
+Ein reguläres CMS, unter anderem Wordpress, mit dem die bisherige HTL-Website umgesetzt wurde, ist ein Softwareprodukt, 
 welches den Benutzern ermöglicht, digital die Daten deren Webseite zu erstellen, gemeinsam zu bearbeiten, zu speichern 
 und anschließend zu veröffenlichen.
-Storyblok hingegen ist kein herkömmliches CMS, sondern ein headless, wortwörtlich aus dem englischen übersetzt "kopfloses" CMS, 
+Storyblok hingegen ist kein herkömmliches CMS, sondern ein headless, wortwörtlich aus dem englischen übersetzt \emph{kopfloses} CMS, 
 was bedeutet, dass Storyblok nur die Daten und Datenspeicherung betrifft (der Body), nicht aber die Anwendung selbst, die wir als User sehen, in unseren Fall die Webseite (der Head).
-Durch diese Struktur und der daraus resultierenden Abgrenzung haben die Entwickler sehr viel Freiheit. Diejenigen, die den Content bearbeiten und erstellen müssen sich keine Gedanken über die Endgeräte machen.
-Weiters sind die Frontend-Entwickler nicht limitiert auf eine bestimmte Technologie. Somit kann eine Marke oder ein Produkt per iOS App, Android App und Web representiert werden, ohne, 
-dass man sich auf eine bestimmte Technologie fokusieren muss. Jeder kann nativ beziehungsweise mit der Software, die ihm am meisten zusagt, programmieren. \cite{storyblok}
+Durch diese Struktur und der daraus resultierenden Abgrenzung haben die Entwickler sehr viel Freiheit. Diejenigen, die den Content bearbeiten und erstellen, müssen sich keine Gedanken über die Endgeräte machen.
+Weiters sind die Frontend-Entwickler nicht limitiert auf eine bestimmte Technologie. Somit kann eine Marke oder ein Produkt per iOS App, Android App und Web representiert werden, ohne 
+dass man sich auf eine bestimmte Technologie fokusieren muss. Jeder kann nativ, beziehungsweise mit der Software, die ihm am meisten zusagt, programmieren. \cite{storyblok}
 \section{Next.Js 13}
 \setauthor{Peter Klose}
 Als Frontend-Technologie stützen wir uns auf Next.js 13, ein React Framework für full-stack Web-Applikationen. \cite{nextjsdocs}
@@ -18,13 +18,13 @@ Die hauptsächlichen Features von Next sind dabei folgende:
 
 \subsection{Routing}
 \setauthor{Peter Klose}
-Next liefert direkt einen Filesystem basierten Router mit. Dieser unterstützt unter anderem Layouts, verschachtelte Routen, den Ladestatus und viele weitere.
+Next liefert direkt einen Filesystem basierten Router mit. Dieser unterstützt unter anderem Layouts, verschachtelte Routen, den Ladestatus und viele weitere Features.
 Für die HTL-Website wurde dabei der neue App Router Ansatz gewählt, welcher mit Next 13 veröffenlicht wurde. Durch ihn werden die Neuheiten von React, wie Server Componentes und Streaming in Next eingebaut. \cite{nextjsdocsrouting}
 
 \subsection{Optimierung}
 \setauthor{Peter Klose}
 In der Webbranche ist Pagespeed mitunter das Wichtigste. Dies hat auch Next verstanden und bietet daher einige Optimierungsoptionen bei Bildern, Links oder auch bei den Metadaten und Scripts. 
-Bei den Bildern wurde das <img> Element dahingehend überarbeitet, dass Bilder "lazy" geladen werden und dynamisch auf die große des Bildschirms angepasst werden. 
+Bei den Bildern wurde das <img> Element dahingehend überarbeitet, dass Bilder "lazy" geladen werden und dynamisch auf die Größe des Bildschirms angepasst werden. 
 Das <a> Tag beziehungsweise der Link wurde dahingehend angepasst, dass die Webseite, wenn sie vollständig geladen ist, die möglichen Ziele vorlädt um somit eine schnelleren und weicheren Wechsel der Seiten zu ermöglichen. \cite{nextjsdocsoptimizations}
 
 \subsection{Rendern}
@@ -34,13 +34,13 @@ Server-Components hingegen müssen zunächst auf dem Server zusammengebaut werde
 
 \section{Vercel}
 \setauthor{Peter Klose}
-Beim Deployment Vercel hauptsächlich verwendet, weil Next aus dem selben Hause stammt und das Deployment somit keine Problem darstellt.
+Beim Deployment wird Vercel hauptsächlich verwendet, weil Next aus dem selben Hause stammt und das Deployment somit keine Problem darstellt.
 Sobald 'next build' funktioniert, kann das GitHub Repository einfach mit einem Vercel Account verbunden werden und der main-Branch ist nach 2 Minuten deployed. \cite{vercel}
 
 \section{TailwindCss}
 \setauthor{Peter Klose}
 Als CSS Framework wird TailwindCSS als PostCSS Plugin verwendet. 
-Um trotzdem eine übersichtliche Struktur in die Klassennamen beizubehalten wurde die VS-Code Erweiterung Prettier verwendet. 
+Um trotzdem eine übersichtliche Struktur in den Klassennamen beizubehalten, wurde die VS-Code Erweiterung Prettier verwendet. 
 Dadurch werden die Klassennamen gemäß der vorgeschlagenen Sortierung von Tailwind geordnet.
 
 
